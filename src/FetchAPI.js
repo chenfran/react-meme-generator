@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import styles from './App.module.scss';
 
 // Function: fetch Data from my URL
 export default function FetchData() {
@@ -17,7 +16,7 @@ export default function FetchData() {
       <h1>Data:</h1>
       <ul>
         {data.map((item) => (
-          <li key={`item-${item.id}`}>{item.blank}</li>
+          <li key="item-item.id">{item.blank}</li>
         ))}
       </ul>
     </div>

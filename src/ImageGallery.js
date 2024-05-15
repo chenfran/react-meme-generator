@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import memes from './FetchAPI.js';
 
 export default function MemeImage() {
   const [currentImage, setCurrentImage] = useState(0);

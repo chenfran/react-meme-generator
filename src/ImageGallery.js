@@ -3,9 +3,9 @@ import { useState } from 'react';
 export default function MemeImage() {
   const [currentImage, setCurrentImage] = useState(0);
   const allImages = [
-    'https://api.memegen.link/images/aag.png',
-    'https://api.memegen.link/images/ackbar.png',
-    'https://api.memegen.link/images/afraid.png',
+    { id: 1, url: 'https://api.memegen.link/images/aag.png' },
+    { id: 2, url: 'https://api.memegen.link/images/ackbar.png' },
+    { id: 3, url: 'https://api.memegen.link/images/afraid.png' },
   ];
 
   return (
@@ -13,21 +13,21 @@ export default function MemeImage() {
       <div className="flex gap-4 items-center">
         <div className="flex flex-col gap-4">
           <img
-            src={allImages[0]}
+            src={allImages[0].url}
             alt="aag"
             style={{ width: 100, height: 100 }}
             onMouseOver={(e) => setCurrentImage(0)}
             onFocus={(e) => setCurrentImage(0)}
           />
           <img
-            src={allImages[1]}
+            src={allImages[1].url}
             alt="ackbar"
             style={{ width: 100, height: 100 }}
             onMouseOver={(e) => setCurrentImage(1)}
             onFocus={(e) => setCurrentImage(1)}
           />
           <img
-            src={allImages[2]}
+            src={allImages[2].url}
             alt="afraid"
             style={{ width: 100, height: 100 }}
             onMouseOver={(e) => setCurrentImage(2)}
@@ -36,7 +36,7 @@ export default function MemeImage() {
         </div>
         <div>
           <img
-            src={allImages[currentImage]}
+            src={allImages[currentImage].url}
             width={480}
             height={480}
             alt="currentImage"

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
 import FetchData from './FetchAPI.js';
 import MemeImage from './ImageGallery.js';
+import TextInputs from './TextInputs';
 
 // # ACTUAL CODE
 // I will get the images from this URL
@@ -11,10 +12,15 @@ const url = 'https://api.memegen.link/templates/';
 export default function App() {
   return (
     <div>
-      <FetchData />
+      <TextInputs />
       <br />
       <br />
       <MemeImage />
+      <br />
+      <br />
+      <FetchData />
+      <br />
+      <br />
     </div>
   );
 }
@@ -24,30 +30,4 @@ export default function App() {
 //   client.get(url, (res) => {
 //     res.pipe(fs.createWriteStream(filepath));
 //   });
-// }
-
-// export default function App() {
-//   const [topText, setTopText] = useState('');
-//   const [bottomText, setBottomText] = useState('');
-//   return (
-//     <form onSubmit={(event) => event.preventDefault()}>
-//       <h1>React Meme Generator - Let's do it!</h1>
-//       <input
-//         value={topText}
-//         onChange={(event) => setTopText(event.currentTarget.value)}
-//       />
-//       <div>Top Text: {topText}</div>
-//       <br />
-//       <input
-//         value={bottomText}
-//         onChange={(event) => setBottomText(event.currentTarget.value)}
-//       />
-//       <div>Bottom Text: {bottomText}</div>
-//       <br />
-//       <button>Generate</button>
-//       <br />
-//       <br />
-//       <button>Download</button>
-//     </form>
-//   );
 // }

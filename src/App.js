@@ -11,17 +11,21 @@ const url = 'https://api.memegen.link/templates/';
 
 export default function App() {
   return (
-    <div>
-      <TextInputs />
-      <br />
-      <br />
-      <MemeImage />
-      <br />
-      <br />
-      <FetchData />
-      <br />
-      <br />
-    </div>
+    <main>
+      <h1>React Meme Generator - Let's do it!</h1>
+      <section>
+        <span>
+          <TextInputs />
+        </span>
+        <div>
+          <br />
+          <br />
+          <FetchData />
+          <br />
+          <br />
+        </div>
+      </section>
+    </main>
   );
 }
 

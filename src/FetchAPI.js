@@ -10,18 +10,31 @@ export default function FetchData() {
       .then((data) => setFetchImages(data))
       .catch((error) => console.error(error));
   }, []);
-  const memeImages = fetchImages.map((fetchImage) => (
-    <li key="fetchImage-fetchImage.id">{fetchImage.blank}</li>
-  ));
-  const randomImage = memeImages[Math.floor(Math.random() * memeImages.length)];
   return (
-    <>
-      <h1>Memes:</h1>
-      <div>{randomImage}</div>
-      {/* FIX ME: Image can not be displayed | NOTE: maybe if I convert the object to an array */}
-      <img src={randomImage} alt="Random Meme" width={100} height={100} />
-    </>
+    <div>
+      {fetchImages.map((image) => (
+        <img
+          key="image-image.id"
+          src={image.blank}
+          alt={image.alt}
+          style={{ height: '100px' }}
+        />
+      ))}
+    </div>
   );
+
+  // const memeImages = fetchImages.map((fetchImage) => (
+  //   <li key="fetchImage-fetchImage.id">{fetchImage.blank}</li>
+  // ));
+  // const randomImage = memeImages[Math.floor(Math.random() * memeImages.length)];
+  // return (
+  //   <>
+  //     <h1>Memes:</h1>
+  //     <div>{randomImage}</div>
+  //     {/* FIX ME: Image can not be displayed | NOTE: maybe if I convert the object to an array */}
+  //     <img src={randomImage} alt="Random Meme" width={100} height={100} />
+  //   </>
+  // );
 
   // return (
   //   <div>

@@ -5,14 +5,13 @@ export default function TextInputs() {
   const [bottomText, setBottomText] = useState('');
   return (
     <form onSubmit={(event) => event.preventDefault()}>
-      <h1>React Meme Generator - Let's do it!</h1>
-      <div>Top Text: {topText}</div>
+      <span>Top Text: {topText}</span>
       <input
         value={topText}
         onChange={(event) => setTopText(event.currentTarget.value)}
       />
-      <br />
-      <div>Bottom Text: {bottomText}</div>
+      <p>write a text</p>
+      <span>Bottom Text: {bottomText}</span>
       <input
         value={bottomText}
         onChange={(event) => setBottomText(event.currentTarget.value)}

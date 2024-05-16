@@ -3,11 +3,10 @@ import { useState } from 'react';
 export default function MemeImage() {
   const [currentImage, setCurrentImage] = useState(0);
   const allImages = [
-    { id: 1, url: 'https://api.memegen.link/images/aag.png' },
-    { id: 2, url: 'https://api.memegen.link/images/ackbar.png' },
-    { id: 3, url: 'https://api.memegen.link/images/afraid.png' },
+    { id: 1, url: 'https://api.memegen.link/images/aag.png', alt: 'image1' },
+    { id: 2, url: 'https://api.memegen.link/images/ackbar.png', alt: 'image2' },
+    { id: 3, url: 'https://api.memegen.link/images/afraid.png', alt: 'image3' },
   ];
-
   return (
     <div className="p-5">
       <div className="flex gap-4 items-center">

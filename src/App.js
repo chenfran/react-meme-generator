@@ -44,7 +44,6 @@ export default function App() {
             <div className={styles.column}>
               <span className={styles.imgPreview}>
                 <MemeImage />
-                [Hier kommt das Bild, das ausgewählt wurde.]
               </span>
             </div>
           </div>

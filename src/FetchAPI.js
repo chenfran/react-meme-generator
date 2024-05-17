@@ -11,6 +11,7 @@ export default function FetchData() {
       .then((data) => setFetchImages(data))
       .catch((error) => console.error(error));
   }, []);
+
   return (
     <div>
       {image && (

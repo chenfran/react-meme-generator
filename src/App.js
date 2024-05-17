@@ -1,37 +1,65 @@
-// # IMPORTED FUNCTIONS & FILES
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './App.module.scss';
-import FetchData from './FetchAPI.js';
+import FetchData from './FetchAPI';
 import MemeImage from './ImageGallery.js';
-import TextInputs from './TextInputs';
-
-// # ACTUAL CODE
-// I will get the images from this URL
-const url = 'https://api.memegen.link/templates/';
 
 export default function App() {
+  const [topText, setTopText] = useState('');
+  const [bottomText, setBottomText] = useState('');
   return (
     <main>
-      <h1>React Meme Generator - Let's do it!</h1>
       <section>
-        <span>
-          <TextInputs />
-        </span>
+        <h1>React Meme Generator</h1>
+
+        <form onSubmit={(event) => event.preventDefault()}>
+          <div className={styles.row}>
+            <div className={styles.column}>
+              <span>
+                Enter your text. <br />
+                It will appear at the top of the image.
+              </span>
+              <br />
+              <form onSubmit={(event) => event.preventDefault()}>
+                <input
+                  placeholder="Top Text"
+                  value={topText}
+                  onChange={(event) => setTopText(event.currentTarget.value)}
+                />
+                <p>{topText}</p>
+                <br />
+                <br />
+                <span>
+                  Enter your text. <br />
+                  It will appear at the bottom of the image.
+                </span>
+                <br />
+                <input
+                  placeholder="Bottom Text"
+                  value={bottomText}
+                  onChange={(event) => setBottomText(event.currentTarget.value)}
+                />
+                <p>{bottomText}</p>
+              </form>
+            </div>
+            <div className={styles.column}>
+              <span className={styles.imgPreview}>
+                <MemeImage />
+                [Hier kommt das Bild, das ausgewählt wurde.]
+              </span>
+            </div>
+          </div>
+        </form>
         <div>
-          <br />
-          <br />
+          <button>Generate</button>
+          <button>Download your meme</button>
+        </div>
+      </section>
+      <section className={styles.row}>
+        <div className={styles.column}>
+          <h4>Click on an image to choose one for your meme:</h4>
           <FetchData />
-          <br />
-          <br />
         </div>
       </section>
     </main>
   );
 }
-
-// Function: download image (url)
-// function downloadImage(url, filepath) {
-//   client.get(url, (res) => {
-//     res.pipe(fs.createWriteStream(filepath));
-//   });
-// }

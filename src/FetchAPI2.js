@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import styles from './App.module.scss';
 import SearchItem from './SearchItem.js';
 
 export default function Search() {
@@ -38,7 +39,7 @@ export default function Search() {
   return (
     <>
       {searchBox}
-      <div className="masonry-container">{memeList}</div>
+      <div>{memeList}</div>
     </>
   );
 }

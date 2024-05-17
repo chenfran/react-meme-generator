@@ -1,7 +1,10 @@
 import { useRef, useState } from 'react';
+import { FaDownload } from 'react-icons/fa';
+import { MdSettingsBackupRestore } from 'react-icons/md';
 import styles from './App.module.scss';
+import DownloadButton from './DownloadButton';
 import FetchData from './FetchAPI';
-import FetchData2 from './FetchAPI2.js';
+import Search from './FetchAPI2.js';
 import MemeImage from './ImageGallery.js';
 
 export default function App() {
@@ -50,14 +53,25 @@ export default function App() {
           </div>
         </form>
         <div>
-          <button>Generate</button>
-          <button>Download your meme</button>
+          <button>
+            <span>
+              <MdSettingsBackupRestore />
+            </span>
+            <span>&nbsp;Generate</span>
+          </button>
+
+          <button>
+            <span>
+              <FaDownload />
+            </span>
+            <span>&nbsp;&nbsp;Download your meme</span>
+          </button>
         </div>
       </section>
       <section className={styles.column}>
         <div>
           <h4>Click on an image to choose one for your meme:</h4>
-          <FetchData />
+          <Search />
         </div>
       </section>
     </main>

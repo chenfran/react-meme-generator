@@ -107,11 +107,17 @@ export default function MemeImage() {
         </form>
 
         {/* Need a 'Meme Template'.
-        ❤️‍🩹 HOW-TO: Figure out what they want */}
-        <div>
-          <label htmlFor="site-search">Meme template</label>
-          <input type="search" id="site-search" name="q" />
-          <button>Search</button>
+        ❤️‍🩹 HOW-TO: Figure out what they want: "The meme template (background image) selector element needs to have a label element associated with it containing the text Meme template" */}
+        <div className="search-top">
+          <div className="search">
+            <label htmlFor="site-search">Meme template</label>
+            <input
+              type="text"
+              placeholder="Search Here..."
+              name="memeTemplate"
+            />
+            <button>Search</button>
+          </div>
         </div>
       </div>
     </div>

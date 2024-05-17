@@ -10,7 +10,6 @@ export default function App() {
     <main>
       <section>
         <h1>React Meme Generator</h1>
-
         <form onSubmit={(event) => event.preventDefault()}>
           <div className={styles.row}>
             <div className={styles.column}>
@@ -44,6 +43,7 @@ export default function App() {
             <div className={styles.column}>
               <span className={styles.imgPreview}>
                 <MemeImage />
+                <label htmlFor="meme template">Meme Template</label>
               </span>
             </div>
           </div>

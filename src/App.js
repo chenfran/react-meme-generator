@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from './App.module.scss';
 import FetchData from './FetchAPI';
+import FetchData2 from './FetchAPI2.js';
 import MemeImage from './ImageGallery.js';
 
 export default function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
+
   return (
-    <main>
-      <section>
+    <main className={styles.row}>
+      <section className={styles.column}>
         <h1>React Meme Generator</h1>
         <form onSubmit={(event) => event.preventDefault()}>
           <div className={styles.row}>
@@ -42,7 +44,6 @@ export default function App() {
             </div>
             <div className={styles.column}>
               <span className={styles.imgPreview}>
-                <MemeImage />
                 <label htmlFor="meme template">Meme Template</label>
               </span>
             </div>
@@ -53,8 +54,8 @@ export default function App() {
           <button>Download your meme</button>
         </div>
       </section>
-      <section className={styles.row}>
-        <div className={styles.column}>
+      <section className={styles.column}>
+        <div>
           <h4>Click on an image to choose one for your meme:</h4>
           <FetchData />
         </div>

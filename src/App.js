@@ -1,13 +1,93 @@
-import { useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaDownload } from 'react-icons/fa';
 import { MdSettingsBackupRestore } from 'react-icons/md';
 import styles from './App.module.scss';
-import DownloadButton from './DownloadButton';
-import FetchData from './FetchAPI';
-import Search from './FetchAPI2.js';
-import MemeImage from './ImageGallery.js';
+
+// ❤️‍🩹 HOW-TO: I changed this SearchItem function so it fetches again from the URL because I want to add this onClick to the image but it does not work
+// Now I can click on the images but the search does not work anymore - I think I have to connect "meme" with "image" in this function. Maybe something with props?
+function SearchItem({ meme }) {
+  const [fetchImages, setFetchImages] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.memegen.link/templates')
+      .then((response) => response.json())
+      .then((res) => setFetchImages(res))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const [image, setImage] = useState(null);
+
+  return (
+    <div>
+      {image && (
+        <img
+          key="image-image.id"
+          src={image.blank}
+          alt={image.name}
+          style={{ height: '100px' }}
+        />
+      )}
+      {!image &&
+        fetchImages.map((image) => (
+          <img
+            role="presentation"
+            onClick={() => {
+              setImage(image);
+            }}
+            key="image-image.id"
+            src={image.blank}
+            alt={image.name}
+            style={{ height: '100px' }}
+          />
+        ))}
+    </div>
+    // <span>
+    //   {memeImages.map((memeImage) => (
+    //     <img
+    //       key="memeImage-memeImage.id"
+    //       alt={memeImage.name}
+    //       src={memeImage.blank}
+    //       style={{ height: '100px', width: '100px' }}
+    //       onClick={() => {
+    //         setImage(image);
+    //       }}
+    //       role="presentation"
+    //     />
+    //   ))}
+    // </span>
+  );
+}
 
 export default function App() {
+  const [memes, SetMemes] = useState([]);
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    fetch('https://api.memegen.link/templates')
+      .then((response) => response.json())
+      .then((res) => SetMemes(res))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const handleOnChange = (event) => {
+    setSearch(event.target.value.toLowerCase());
+  };
+
+  const filteredMeme = memes.filter((meme) =>
+    meme.name.toLowerCase().includes(search),
+  );
+
+  const memeList =
+    memes && memes.length
+      ? filteredMeme.map((meme) => (
+          <SearchItem key="meme-meme.id" meme={meme} />
+        ))
+      : null;
+
+  const searchBox = (
+    <input placeholder="Search meme" onChange={handleOnChange} />
+  );
+
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
 
@@ -59,7 +139,6 @@ export default function App() {
             </span>
             <span>&nbsp;Generate</span>
           </button>
-
           <button>
             <span>
               <FaDownload />
@@ -69,10 +148,12 @@ export default function App() {
         </div>
       </section>
       <section className={styles.column}>
-        <div>
-          <h4>Click on an image to choose one for your meme:</h4>
-          <Search />
-        </div>
+        {searchBox}
+        <span>
+          Search for a background image for your meme or click on an image to
+          select it.
+        </span>
+        <div>{memeList}</div>
       </section>
     </main>
   );

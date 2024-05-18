@@ -42,18 +42,11 @@ function SearchItem({ meme }) {
         ))}
     </div>
     // <span>
-    //   {memeImages.map((memeImage) => (
     //     <img
-    //       key="memeImage-memeImage.id"
-    //       alt={memeImage.name}
-    //       src={memeImage.blank}
+    //       alt={meme.name}
+    //       src={meme.blank}
     //       style={{ height: '100px', width: '100px' }}
-    //       onClick={() => {
-    //         setImage(image);
-    //       }}
-    //       role="presentation"
     //     />
-    //   ))}
     // </span>
   );
 }

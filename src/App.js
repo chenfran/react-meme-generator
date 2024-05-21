@@ -1,152 +1,182 @@
+// # IMPORT FUNCTIONS, ICON AND STYLING
 import { useEffect, useState } from 'react';
 import { FaDownload } from 'react-icons/fa';
-import { MdSettingsBackupRestore } from 'react-icons/md';
 import styles from './App.module.scss';
 
-// ❤️‍🩹 HOW-TO: I changed this SearchItem function so it fetches again from the URL because I want to add this onClick to the image but it does not work
-// Now I can click on the images but the search does not work anymore - I think I have to connect "meme" with "image" in this function. Maybe something with props?
-function SearchItem({ meme }) {
-  const [fetchImages, setFetchImages] = useState([]);
-
-  useEffect(() => {
-    fetch('https://api.memegen.link/templates')
-      .then((response) => response.json())
-      .then((res) => setFetchImages(res))
-      .catch((err) => console.error(err));
-  }, []);
-
-  const [image, setImage] = useState(null);
-
-  return (
-    <div>
-      {image && (
-        <img
-          key="image-image.id"
-          src={image.blank}
-          alt={image.name}
-          style={{ height: '100px' }}
-        />
-      )}
-      {!image &&
-        fetchImages.map((image) => (
-          <img
-            role="presentation"
-            onClick={() => {
-              setImage(image);
-            }}
-            key="image-image.id"
-            src={image.blank}
-            alt={image.name}
-            style={{ height: '100px' }}
-          />
-        ))}
-    </div>
-    // <span>
-    //     <img
-    //       alt={meme.name}
-    //       src={meme.blank}
-    //       style={{ height: '100px', width: '100px' }}
-    //     />
-    // </span>
-  );
-}
-
+// # THE APP FUNCTION
 export default function App() {
-  const [memes, SetMemes] = useState([]);
-  const [search, setSearch] = useState('');
+  // Declare new state variables, which we'll call "searchTerm", "selectedImage" and "images" for searching for an image, clicking on an image and display the image
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [images, setImages] = useState([]);
 
-  useEffect(() => {
-    fetch('https://api.memegen.link/templates')
-      .then((response) => response.json())
-      .then((res) => SetMemes(res))
-      .catch((err) => console.error(err));
-  }, []);
+  // Declare a new state variable, which we'll call "imageSelf" to use it later to get the URL from the meme images
+  const [imageSelf, setImageSelf] = useState('');
 
-  const handleOnChange = (event) => {
-    setSearch(event.target.value.toLowerCase());
-  };
-
-  const filteredMeme = memes.filter((meme) =>
-    meme.name.toLowerCase().includes(search),
-  );
-
-  const memeList =
-    memes && memes.length
-      ? filteredMeme.map((meme) => (
-          <SearchItem key="meme-meme.id" meme={meme} />
-        ))
-      : null;
-
-  const searchBox = (
-    <input placeholder="Search meme" onChange={handleOnChange} />
-  );
-
+  // Declare new state variables, which we'll call "topText" and "bottomText" for the text input
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
+
+  // Use useEffect to fetch Data from the Webpage
+  useEffect(() => {
+    fetch('https://api.memegen.link/templates')
+      .then((response) => response.json())
+      .then((res) => setImages(res))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const filteredImages = images.filter((image) =>
+    image.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  // Create function that sets the selectedImage state to the clicked image
+  function handleImageClick(image) {
+    setSelectedImage(image);
+    setImageSelf(image.blank);
+  }
+  const memeSelf = imageSelf.replace(/.png/g, '');
+
+  // Create function that sets the selectedImage state to null, effectively removing the selected image display
+  function handleCloseClick() {
+    setSelectedImage(null);
+  }
 
   return (
     <main className={styles.row}>
       <section className={styles.column}>
         <h1>React Meme Generator</h1>
-        <form onSubmit={(event) => event.preventDefault()}>
-          <div className={styles.row}>
-            <div className={styles.column}>
-              <span>
-                Enter your text. <br />
-                It will appear at the top of the image.
-              </span>
-              <br />
-              <form onSubmit={(event) => event.preventDefault()}>
+
+        {/* Create a user guide on how to use the meme generator  */}
+        <div className={styles.column}>
+          {' '}
+          <span>
+            <p style={{ fontWeight: 'bold' }}>Create Your Own Meme:</p>
+            <ol>
+              <li>
+                <span style={{ fontWeight: 'bold' }}>Select an image: </span>
+                Browse or click an image on the right.
+              </li>
+              <li>
+                <span style={{ fontWeight: 'bold' }}>Add text: </span>Type in
+                the Top or Bottom text fields to add text to the image.
+                <br />
+                <span style={{ fontSize: 'small' }}>
+                  Use letters and numbers only. No special characters.
+                </span>
+              </li>
+              <li>
+                <span style={{ fontWeight: 'bold' }}>Download: </span>Click the
+                download button to save your meme.
+              </li>
+            </ol>
+            <p>Enjoy creating!</p>
+          </span>
+          {/* Create two input fields for the top and bottom text */}
+          <form onSubmit={(event) => event.preventDefault()}>
+            <div>
+              <div>
+                <span style={{ fontWeight: 'bold' }}>Top Text: </span>
+                <p>{topText}</p>
+                <br />
                 <input
-                  placeholder="Top Text"
+                  placeholder="Type your top text"
                   value={topText}
                   onChange={(event) => setTopText(event.currentTarget.value)}
                 />
-                <p>{topText}</p>
                 <br />
                 <br />
-                <span>
-                  Enter your text. <br />
-                  It will appear at the bottom of the image.
-                </span>
+                <span style={{ fontWeight: 'bold' }}>Bottom Text: </span>
+                <p>{bottomText}</p>
                 <br />
                 <input
-                  placeholder="Bottom Text"
+                  placeholder="Type your bottom text"
                   value={bottomText}
                   onChange={(event) => setBottomText(event.currentTarget.value)}
                 />
-                <p>{bottomText}</p>
-              </form>
+              </div>
             </div>
-            <div className={styles.column}>
-              <span className={styles.imgPreview}>
-                <label htmlFor="meme template">Meme Template</label>
-              </span>
-            </div>
+          </form>
+        </div>
+
+        {/* Create a preview of the generated meme */}
+        <div className={styles.column}>
+          {' '}
+          <div className={styles.imgPreview}>
+            <img
+              src={`${memeSelf}/${topText}_/${bottomText}.png`}
+              alt={imageSelf.name}
+              style={{ width: '300px' }}
+            />
           </div>
-        </form>
-        <div>
-          <button>
-            <span>
-              <MdSettingsBackupRestore />
-            </span>
-            <span>&nbsp;Generate</span>
-          </button>
-          <button>
-            <span>
-              <FaDownload />
-            </span>
-            <span>&nbsp;&nbsp;Download your meme</span>
-          </button>
+          {/* Create a download button  */}
+          <div>
+            <form
+              method="get"
+              action={`${memeSelf}/${topText}_/${bottomText}.png`}
+            >
+              <button>
+                <span>
+                  <FaDownload />
+                </span>
+                <span>&nbsp;&nbsp;Download your meme</span>
+              </button>
+            </form>
+          </div>
         </div>
       </section>
       <section className={styles.column}>
-        {searchBox}
-        <span>
-          Search for a background image for your meme or click on an image to
-          select it.
-        </span>
-        <div>{memeList}</div>
+        <div>
+          {/* Create the search input  */}
+          <div>
+            <input
+              className={styles.searchBar}
+              placeholder="Search for an image"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+
+          {/* If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}
+          <div>
+            {selectedImage && (
+              <div className={styles.selectedImageBoxStyles}>
+                <span
+                  className={styles.closeButtonStyles}
+                  onClick={handleCloseClick}
+                  role="presentation"
+                >
+                  {/* Create a close button with "&times" */}
+                  &times;
+                </span>
+                <img
+                  src={selectedImage.blank}
+                  alt={selectedImage.name}
+                  style={{
+                    width: '300px',
+                    height: '300px',
+                    objectFit: 'cover',
+                  }}
+                />
+                <p>{selectedImage.name}</p>
+              </div>
+            )}
+          </div>
+
+          {/* Create an image gallery */}
+          <div className={styles.boxForHandleImageClick}>
+            {filteredImages.map((image) => (
+              <div key="image-image.id" style={{ margin: '2px' }}>
+                <img
+                  src={image.blank}
+                  alt={image.name}
+                  onClick={() => handleImageClick(image)}
+                  style={{ width: '100px', height: '100px' }}
+                  role="presentation"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
     </main>
   );

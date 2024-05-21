@@ -7,7 +7,7 @@ import styles from './App.module.scss';
 export default function App() {
   // Declare new state variables, which we'll call "searchTerm", "selectedImage" and "images" for searching for an image, clicking on an image and display the image
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(false);
   const [images, setImages] = useState([]);
 
   // Declare a new state variable, which we'll call "imageSelf" to use it later to get the URL from the meme images
@@ -155,8 +155,9 @@ export default function App() {
           </div>
 
           {/* If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}
-          <div label="Meme template">
-            {selectedImage && (
+
+          {selectedImage && (
+            <div label="Meme template">
               <div className={styles.selectedImageBoxStyles}>
                 <span
                   className={styles.closeButtonStyles}
@@ -166,6 +167,7 @@ export default function App() {
                   {/* Create a close button with "&times" */}
                   &times;
                 </span>
+
                 <img
                   src={selectedImage.blank}
                   alt={selectedImage.name}
@@ -177,8 +179,8 @@ export default function App() {
                 />
                 <p>{selectedImage.name}</p>
               </div>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Create an image gallery */}
           <div className={styles.boxForHandleImageClick}>

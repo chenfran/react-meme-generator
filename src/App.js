@@ -118,7 +118,6 @@ export default function App() {
               ) : (
                 <div>
                   <img
-                    data-test-id="meme-image"
                     src={`https://api.memegen.link/images/buzz/${topText}_/${bottomText}.png`}
                     alt="buzz"
                     style={{ width: '100%' }}
@@ -137,7 +136,7 @@ export default function App() {
                   <span>
                     <FaDownload />
                   </span>
-                  <span>&nbsp;&nbsp;Download</span>
+                  <span>Download</span>
                 </button>
               </form>
             </div>

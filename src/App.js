@@ -4,13 +4,14 @@ export default function SimpleSolution() {
   const [topText, setTopText] = useState('hi');
   const [bottomText, setBottomText] = useState('there');
   const [memeName, setMemeName] = useState('bender');
-  const clearedTopText = topText.replace(/\s+/g, '_');
-  const clearedBottomText = bottomText.replace(/\s+/g, '_');
-  const clearedMemeName = memeName.replace(/\s+/g, '_');
 
   return (
     <div>
-      <form onSubmit={(event) => event.preventDefault()}>
+      <form
+        onSubmit={(event) => event.preventDefault()}
+        method="get"
+        action={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}
+      >
         <label htmlFor="Top text">Top text</label>
         <input
           name="Top text"
@@ -31,7 +32,7 @@ export default function SimpleSolution() {
         />
         <label htmlFor="Meme template">Meme template</label>
         <img
-          src={`https://api.memegen.link/images/${clearedMemeName}/${clearedTopText}/${clearedBottomText}.png`}
+          src={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}
           alt="Meme template"
           data-test-id="meme-image"
         />
@@ -48,7 +49,7 @@ export default function SimpleSolution() {
 
       <form
         method="get"
-        action={`https://api.memegen.link/images/${clearedMemeName}/${clearedTopText}/${clearedBottomText}.png`}
+        action={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}
       >
         <button name="Download">Download</button>
       </form>

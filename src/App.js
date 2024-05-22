@@ -1,6 +1,5 @@
 // # IMPORT FUNCTIONS, ICON AND STYLING
 import { useEffect, useState } from 'react';
-import { FaDownload } from 'react-icons/fa';
 import styles from './App.module.scss';
 
 // # THE APP FUNCTION
@@ -50,25 +49,24 @@ export default function App() {
         <div className={styles.row}>
           {/* Create a user guide on how to use the meme generator  */}
           <div className={styles.column}>
-            {' '}
             <span>
-              <p style={{ fontWeight: 'bold' }}>Create Your Own Meme:</p>
+              <strong>Create Your Own Meme:</strong>
               <ol>
                 <li>
-                  <span style={{ fontWeight: 'bold' }}>Select an image: </span>
+                  <strong>Select an image: </strong>
                   Browse or click an image on the right.
                 </li>
                 <li>
-                  <span style={{ fontWeight: 'bold' }}>Add text: </span>Type in
-                  the Top or Bottom text fields to add text to the image.
+                  <strong>Add text: </strong>Type in the Top or Bottom text
+                  fields to add text to the image.
                   <br />
                   <span style={{ fontSize: 'small' }}>
                     Use letters and numbers only. No special characters.
                   </span>
                 </li>
                 <li>
-                  <span style={{ fontWeight: 'bold' }}>Download: </span>Click
-                  the download button to save your meme.
+                  <strong>Download: </strong>Click the download button to save
+                  your meme.
                 </li>
               </ol>
               <p>Enjoy creating!</p>
@@ -77,7 +75,11 @@ export default function App() {
             <form onSubmit={(event) => event.preventDefault()}>
               <div>
                 <div>
-                  <label htmlFor="top">Top text</label>
+                  <label htmlFor="top">
+                    <strong>Top text: </strong>
+                    {topText}
+                  </label>
+                  <br />
                   <input
                     name="top"
                     id="top"
@@ -88,7 +90,11 @@ export default function App() {
                   />
                   <br />
                   <br />
-                  <label htmlFor="bottom">Bottom text</label>
+                  <label htmlFor="bottom">
+                    <strong>Bottom text: </strong>
+                    {bottomText}
+                  </label>
+                  <br />
                   <input
                     name="bottom"
                     id="bottom"
@@ -110,7 +116,6 @@ export default function App() {
             <div className={styles.imgPreview}>
               {memeSelf ? (
                 <img
-                  data-test-id="meme-image"
                   src={`${memeSelf}/${topText}_/${bottomText}.png`}
                   alt={imageSelf.name}
                   style={{ width: '300px' }}
@@ -118,6 +123,7 @@ export default function App() {
               ) : (
                 <div>
                   <img
+                    data-test-id="meme-image"
                     src={`https://api.memegen.link/images/buzz/${topText}_/${bottomText}.png`}
                     alt="buzz"
                     style={{ width: '100%' }}
@@ -132,12 +138,7 @@ export default function App() {
                 method="get"
                 action={`${memeSelf}/${topText}_/${bottomText}.png`}
               >
-                <button>
-                  <span>
-                    <FaDownload />
-                  </span>
-                  <span>Download</span>
-                </button>
+                <button name="Download">Download</button>
               </form>
             </div>
           </div>

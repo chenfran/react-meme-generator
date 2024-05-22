@@ -4,6 +4,9 @@ export default function SimpleSolution() {
   const [topText, setTopText] = useState('hi');
   const [bottomText, setBottomText] = useState('there');
   const [memeName, setMemeName] = useState('bender');
+  const clearedTopText = topText.replace(/\s+/g, '-');
+  const clearedBottomText = bottomText.replace(/\s+/g, '-');
+  const clearedMemeName = memeName.replace(/\s+/g, '-');
 
   return (
     <div>
@@ -38,29 +41,13 @@ export default function SimpleSolution() {
       </form>
       <label htmlFor="Meme Template">Meme Template</label>
       <img
-        src={
-          'https://api.memegen.link/images/' +
-          memeName.replace(/\s+/g, '-') +
-          '/' +
-          topText.replace(/\s+/g, '-') +
-          '/' +
-          bottomText.replace(/\s+/g, '-') +
-          '.png'
-        }
+        src={`https://api.memegen.link/images/${clearedMemeName}/${clearedTopText}/${clearedBottomText}.png`}
         alt="meme-template"
         data-test-id="meme-image"
       />
       <form
         method="get"
-        action={
-          'https://api.memegen.link/images/' +
-          memeName.replace(/\s+/g, '-') +
-          '/' +
-          topText.replace(/\s+/g, '-') +
-          '/' +
-          bottomText.replace(/\s+/g, '-') +
-          '.png'
-        }
+        action={`https://api.memegen.link/images/${clearedMemeName}/${clearedTopText}/${clearedBottomText}.png`}
       >
         <button name="Download">Download</button>
       </form>

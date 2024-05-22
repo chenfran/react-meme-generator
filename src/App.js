@@ -29,7 +29,7 @@ export default function SimpleSolution() {
           value={bottomText}
           onChange={(event) => setBottomText(event.currentTarget.value)}
         />
-        <label htmlFor="Meme Template">Meme Template</label>
+        <label htmlFor="Meme template">Meme template</label>
         <img
           src={`https://api.memegen.link/images/${clearedMemeName}/${clearedTopText}/${clearedBottomText}.png`}
           alt="meme-template"

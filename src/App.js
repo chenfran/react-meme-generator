@@ -118,11 +118,10 @@ export default function App() {
                 <div>
                   <img
                     data-test-id="meme-image"
-                    src="https://api.memegen.link/images/buzz/your-top-text/your-bottom-text.png"
+                    src={`https://api.memegen.link/images/buzz/${topText}_/${bottomText}.png`}
                     alt="buzz"
                     style={{ width: '100%' }}
                   />
-                  <center>EXAMPLE ONLY 😌</center>
                 </div>
               )}
             </div>

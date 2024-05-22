@@ -79,6 +79,8 @@ export default function App() {
                 <div>
                   <label htmlFor="top">Top text</label>
                   <input
+                    name="top"
+                    id="top"
                     label="top"
                     placeholder="Type your top text"
                     value={topText}
@@ -88,6 +90,8 @@ export default function App() {
                   <br />
                   <label htmlFor="bottom">Bottom text</label>
                   <input
+                    name="bottom"
+                    id="bottom"
                     label="bottom"
                     placeholder="Type your bottom text"
                     value={bottomText}

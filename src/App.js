@@ -29,6 +29,12 @@ export default function SimpleSolution() {
           value={bottomText}
           onChange={(event) => setBottomText(event.currentTarget.value)}
         />
+        <label htmlFor="Meme Template">Meme Template</label>
+        <img
+          src={`https://api.memegen.link/images/${clearedMemeName}/${clearedTopText}/${clearedBottomText}.png`}
+          alt="meme-template"
+          data-test-id="meme-image"
+        />
         <label htmlFor="Meme Name">Meme Name</label>
         <input
           name="Meme Name"
@@ -39,12 +45,7 @@ export default function SimpleSolution() {
           onChange={(event) => setMemeName(event.currentTarget.value)}
         />
       </form>
-      <label htmlFor="Meme Template">Meme Template</label>
-      <img
-        src={`https://api.memegen.link/images/${clearedMemeName}/${clearedTopText}/${clearedBottomText}.png`}
-        alt="meme-template"
-        data-test-id="meme-image"
-      />
+
       <form
         method="get"
         action={`https://api.memegen.link/images/${clearedMemeName}/${clearedTopText}/${clearedBottomText}.png`}

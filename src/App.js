@@ -7,11 +7,7 @@ export default function SimpleSolution() {
 
   return (
     <div>
-      <form
-        onSubmit={(event) => event.preventDefault()}
-        method="get"
-        action={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}
-      >
+      <form onSubmit={(event) => event.preventDefault()}>
         <label htmlFor="Top text">Top text</label>
         <input
           name="Top text"
@@ -30,6 +26,7 @@ export default function SimpleSolution() {
           value={bottomText}
           onChange={(event) => setBottomText(event.currentTarget.value)}
         />
+
         <label htmlFor="Meme template">Meme template</label>
         <img
           src={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}

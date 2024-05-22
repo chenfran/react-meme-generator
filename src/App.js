@@ -106,6 +106,7 @@ export default function App() {
 
           {/* Create a preview of the generated meme */}
           <div className={styles.column}>
+            <label htmlFor="Meme template">Meme template</label>
             <div className={styles.imgPreview}>
               {memeSelf ? (
                 <img
@@ -125,6 +126,7 @@ export default function App() {
                 </div>
               )}
             </div>
+
             {/* Create a download button  */}
             <div>
               <form
@@ -157,29 +159,27 @@ export default function App() {
           {/* If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}
 
           {selectedImage && (
-            <div label="Meme template">
-              <div className={styles.selectedImageBoxStyles}>
-                <span
-                  className={styles.closeButtonStyles}
-                  onClick={handleCloseClick}
-                  role="presentation"
-                >
-                  {/* Create a close button with "&times" */}
-                  &times;
-                </span>
+            <div className={styles.selectedImageBoxStyles}>
+              <span
+                className={styles.closeButtonStyles}
+                onClick={handleCloseClick}
+                role="presentation"
+              >
+                {/* Create a close button with "&times" */}
+                &times;
+              </span>
 
-                <img
-                  data-test-id="meme-image"
-                  src={selectedImage.blank}
-                  alt={selectedImage.name}
-                  style={{
-                    width: '300px',
-                    height: '300px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <p>{selectedImage.name}</p>
-              </div>
+              <img
+                data-test-id="meme-image"
+                src={selectedImage.blank}
+                alt={selectedImage.name}
+                style={{
+                  width: '300px',
+                  height: '300px',
+                  objectFit: 'cover',
+                }}
+              />
+              <p>{selectedImage.name}</p>
             </div>
           )}
 

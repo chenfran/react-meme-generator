@@ -78,8 +78,9 @@ export default function App() {
               <div>
                 <div>
                   <label htmlFor="Top text">
-                    <span style={{ fontWeight: 'bold' }}>Top text : </span>
-                    {topText}{' '}
+                    Top text
+                    {/* <span style={{ fontWeight: 'bold' }}>Top text : </span>
+                    {topText}{' '} */}
                   </label>
                   <br />
                   <input
@@ -91,8 +92,9 @@ export default function App() {
                   <br />
                   <br />
                   <label htmlFor="Bottom text">
-                    <span style={{ fontWeight: 'bold' }}>Bottom text : </span>
-                    {bottomText}
+                    Bottom text
+                    {/* <span style={{ fontWeight: 'bold' }}>Bottom text : </span>
+                    {bottomText} */}
                   </label>
                   <br />
                   <input

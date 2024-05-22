@@ -4,9 +4,9 @@ export default function SimpleSolution() {
   const [topText, setTopText] = useState('hi');
   const [bottomText, setBottomText] = useState('there');
   const [memeName, setMemeName] = useState('bender');
-  const clearedTopText = topText.replace(/\s+/g, '-');
-  const clearedBottomText = bottomText.replace(/\s+/g, '-');
-  const clearedMemeName = memeName.replace(/\s+/g, '-');
+  const clearedTopText = topText.replace(/\s+/g, '_');
+  const clearedBottomText = bottomText.replace(/\s+/g, '_');
+  const clearedMemeName = memeName.replace(/\s+/g, '_');
 
   return (
     <div>
@@ -32,7 +32,7 @@ export default function SimpleSolution() {
         <label htmlFor="Meme template">Meme template</label>
         <img
           src={`https://api.memegen.link/images/${clearedMemeName}/${clearedTopText}/${clearedBottomText}.png`}
-          alt="meme-template"
+          alt="Meme template"
           data-test-id="meme-image"
         />
         <label htmlFor="Meme Name">Meme Name</label>

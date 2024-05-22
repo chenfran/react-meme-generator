@@ -77,11 +77,7 @@ export default function App() {
             <form onSubmit={(event) => event.preventDefault()}>
               <div>
                 <div>
-                  <label htmlFor="Top text">
-                    Top text
-                    {/* <span style={{ fontWeight: 'bold' }}>Top text : </span>
-                    {topText}{' '} */}
-                  </label>
+                  <label htmlFor="top">Top text</label>
                   <br />
                   <input
                     label="Top text"
@@ -91,11 +87,7 @@ export default function App() {
                   />
                   <br />
                   <br />
-                  <label htmlFor="Bottom text">
-                    Bottom text
-                    {/* <span style={{ fontWeight: 'bold' }}>Bottom text : </span>
-                    {bottomText} */}
-                  </label>
+                  <label htmlFor="bottom">Bottom text</label>
                   <br />
                   <input
                     label="Bottom text"

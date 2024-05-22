@@ -3,7 +3,7 @@ import { useState } from 'react';
 export default function SimpleSolution() {
   const [topText, setTopText] = useState('hi');
   const [bottomText, setBottomText] = useState('there');
-  const [usersInput, setUsersInput] = useState('bender');
+  const [memeName, setMemeName] = useState('bender');
 
   return (
     <div>
@@ -26,25 +26,41 @@ export default function SimpleSolution() {
           value={bottomText}
           onChange={(event) => setBottomText(event.currentTarget.value)}
         />
-        <label htmlFor="input">Users Input</label>
+        <label htmlFor="Meme Name">Meme Name</label>
         <input
-          name="input"
-          id="input"
-          label="input"
-          placeholder="Search for an image"
-          value={usersInput}
-          onChange={(event) => setUsersInput(event.currentTarget.value)}
+          name="Meme Name"
+          id="Meme Name"
+          label="Meme Name"
+          placeholder="Search for a meme"
+          value={memeName}
+          onChange={(event) => setMemeName(event.currentTarget.value)}
         />
       </form>
-      <label htmlFor="meme-template">Meme Template</label>
+      <label htmlFor="Meme Template">Meme Template</label>
       <img
-        src={`https://api.memegen.link/images/${usersInput}/${topText}/${bottomText}.png`}
+        src={
+          'https://api.memegen.link/images/' +
+          memeName.replace(/\s+/g, '-') +
+          '/' +
+          topText.replace(/\s+/g, '-') +
+          '/' +
+          bottomText.replace(/\s+/g, '-') +
+          '.png'
+        }
         alt="meme-template"
         data-test-id="meme-image"
       />
       <form
         method="get"
-        action={`https://api.memegen.link/images/${usersInput}/${topText}/${bottomText}.png`}
+        action={
+          'https://api.memegen.link/images/' +
+          memeName.replace(/\s+/g, '-') +
+          '/' +
+          topText.replace(/\s+/g, '-') +
+          '/' +
+          bottomText.replace(/\s+/g, '-') +
+          '.png'
+        }
       >
         <button name="Download">Download</button>
       </form>

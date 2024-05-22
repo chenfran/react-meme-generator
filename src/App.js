@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export default function SimpleSolution() {
   const [topText, setTopText] = useState('hi');
-  const [bottomText, setBottomText] = useState('there');
+  const [bottomText, setBottomText] = useState('');
   const [memeName, setMemeName] = useState('bender');
 
   return (

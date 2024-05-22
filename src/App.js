@@ -8,21 +8,21 @@ export default function SimpleSolution() {
   return (
     <div>
       <form onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="top">Top text</label>
+        <label htmlFor="Top text">Top text</label>
         <input
-          name="top"
-          id="top"
-          label="top"
+          name="Top text"
+          id="Top text"
+          label="Top text"
           placeholder="Type your top text"
           value={topText}
           onChange={(event) => setTopText(event.currentTarget.value)}
         />
-        <label htmlFor="bottom">Bottom text</label>
+        <label htmlFor="Bottom text">Bottom text</label>
         <input
-          name="bottom"
-          id="bottom"
-          label="bottom"
-          placeholder="Type your bottom text"
+          name="Bottom text"
+          id="Bottom text"
+          label="Bottom text"
+          placeholder="Type your Bottom text"
           value={bottomText}
           onChange={(event) => setBottomText(event.currentTarget.value)}
         />
@@ -36,12 +36,18 @@ export default function SimpleSolution() {
           onChange={(event) => setUsersInput(event.currentTarget.value)}
         />
       </form>
-      <label htmlFor="template">Meme Template</label>
+      <label htmlFor="meme-template">Meme Template</label>
       <img
         src={`https://api.memegen.link/images/${usersInput}/${topText}/${bottomText}.png`}
         alt="meme-template"
-        data-test-id="meme-template"
+        data-test-id="meme-image"
       />
+      <form
+        method="get"
+        action={`https://api.memegen.link/images/${usersInput}/${topText}/${bottomText}.png`}
+      >
+        <button name="Download">Download</button>
+      </form>
     </div>
   );
 }

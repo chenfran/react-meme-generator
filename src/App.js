@@ -78,9 +78,8 @@ export default function App() {
               <div>
                 <div>
                   <label htmlFor="top">Top text</label>
-                  <br />
                   <input
-                    label="Top text"
+                    label="top"
                     placeholder="Type your top text"
                     value={topText}
                     onChange={(event) => setTopText(event.currentTarget.value)}
@@ -88,9 +87,8 @@ export default function App() {
                   <br />
                   <br />
                   <label htmlFor="bottom">Bottom text</label>
-                  <br />
                   <input
-                    label="Bottom text"
+                    label="bottom"
                     placeholder="Type your bottom text"
                     value={bottomText}
                     onChange={(event) =>

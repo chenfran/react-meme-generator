@@ -109,14 +109,15 @@ export default function App() {
             <div className={styles.imgPreview}>
               {memeSelf ? (
                 <img
+                  data-test-id="meme-image"
                   src={`${memeSelf}/${topText}_/${bottomText}.png`}
                   alt={imageSelf.name}
                   style={{ width: '300px' }}
-                  data-test-id="meme-image"
                 />
               ) : (
                 <div>
                   <img
+                    data-test-id="meme-image"
                     src="https://api.memegen.link/images/buzz/your-top-text/your-bottom-text.png"
                     alt="buzz"
                     style={{ width: '100%' }}
@@ -169,6 +170,7 @@ export default function App() {
                 </span>
 
                 <img
+                  data-test-id="meme-image"
                   src={selectedImage.blank}
                   alt={selectedImage.name}
                   style={{
@@ -187,6 +189,7 @@ export default function App() {
             {filteredImages.map((image) => (
               <div key="image-image.id" style={{ margin: '2px' }}>
                 <img
+                  data-test-id="meme-image"
                   src={image.blank}
                   alt={image.name}
                   onClick={() => handleImageClick(image)}

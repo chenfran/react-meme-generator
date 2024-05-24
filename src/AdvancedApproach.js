@@ -1,22 +1,24 @@
-// # IMPORT FUNCTIONS, ICON AND STYLING
+// # THIS IS THE ADVANCED APPROACH WITH FETCHING AND STYLING DATA
+
+// 1 IMPORT FUNCTIONS, ICON AND STYLING
 import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
 
-// # THE APP FUNCTION
-export default function Advanced() {
-  // Declare new state variables, which we'll call "searchTerm", "selectedImage" and "images" for searching for an image, clicking on an image and display the image
+// 2 CREATE COMPONENT
+export default function AdvancedApproach() {
+  // 2.1 Declare new state variables, which we'll call "searchTerm", "selectedImage" and "images" for searching for an image, clicking on an image and display the image
   const [searchTerm, setSearchTerm] = useState('cryingfloor');
   const [selectedImage, setSelectedImage] = useState(false);
   const [images, setImages] = useState([]);
 
-  // Declare a new state variable, which we'll call "imageSelf" to use it later to get the URL from the meme images
+  // 2.2 Declare a new state variable, which we'll call "imageSelf" to use it later to get the URL from the meme images
   const [imageSelf, setImageSelf] = useState('');
 
-  // Declare new state variables, which we'll call "topText" and "bottomText" for the text input
+  // 2.3 Declare new state variables, which we'll call "topText" and "bottomText" for the text input
   const [topText, setTopText] = useState('welcome');
   const [bottomText, setBottomText] = useState('');
 
-  // Use useEffect to fetch Data from the Webpage
+  // 2.4 Use useEffect to fetch Data from the Webpage
   useEffect(() => {
     fetch('https://api.memegen.link/templates')
       .then((response) => response.json())
@@ -28,22 +30,24 @@ export default function Advanced() {
     image.id.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  // Create function that sets the selectedImage state to the clicked image
+  // 2.5 Create function that sets the selectedImage state to the clicked image
   function handleImageClick(image) {
     setSelectedImage(image);
     setImageSelf(image.blank);
   }
 
-  // Create a variable to remove the ".png" from the end of the URL
+  // 2.6 Create a variable to remove the ".png" from the end of the URL
   const memeSelf = imageSelf.replace(/.png/g, '');
 
-  // Create function that sets the selectedImage state to null, effectively removing the selected image display
+  // 2.7 Create function that sets the selectedImage state to null, effectively removing the selected image display
   function handleCloseClick() {
     setSelectedImage(null);
   }
 
+  // 2.8 Create url-variable to use it for the download function below
   const url = `${memeSelf}/${topText}/${bottomText}.png`;
 
+  // 2.9 Create a function to download image
   function handleDownload(event) {
     event.preventDefault();
     fetch(url, {
@@ -54,7 +58,7 @@ export default function Advanced() {
     })
       .then((response) => response.blob())
       .then((blob) => {
-        // Create blob link to download
+        // 2.9.1 Create blob link to download
         const fetchedUrl = window.URL.createObjectURL(new Blob([blob]));
         const link = document.createElement('a');
         link.href = fetchedUrl;
@@ -63,13 +67,13 @@ export default function Advanced() {
           `${memeSelf}/${topText}_/${bottomText}.png`,
         );
 
-        // Append to html link element page
+        // 2.9.2 Append to html link element page
         document.body.appendChild(link);
 
-        // Start download
+        // 2.9.3 Start download
         link.click();
 
-        // Clean up and remove the link
+        // 2.9.4 Clean up and remove the link
         link.parentNode.removeChild(link);
       })
       .catch((err) => console.log(err));
@@ -80,7 +84,7 @@ export default function Advanced() {
       <section className={styles.column}>
         <h1>React Meme Generator</h1>
         <div className={styles.row}>
-          {/* Create a user guide on how to use the meme generator  */}
+          {/* 2.10 Create a user guide on how to use the meme generator  */}
           <div className={styles.column}>
             <span>
               <strong>Create Your Own Meme:</strong>
@@ -104,7 +108,7 @@ export default function Advanced() {
               </ol>
               <p>Enjoy creating!</p>
             </span>
-            {/* Create two input fields for the top and bottom text */}
+            {/* 2.11 Create two input fields for the top and bottom text */}
             <form onSubmit={(event) => event.preventDefault()}>
               <div>
                 <div>
@@ -136,7 +140,7 @@ export default function Advanced() {
             </form>
           </div>
 
-          {/* Create a preview of the generated meme */}
+          {/* 2.12 Create a preview of the generated meme */}
           <div className={styles.column}>
             <div className={styles.imgPreview}>
               {memeSelf ? (
@@ -157,9 +161,9 @@ export default function Advanced() {
               )}
             </div>
 
-            {/* Create a download button  */}
+            {/* 2.13 Create a download button  */}
             <div>
-              <form>
+              <form onSubmit={(event) => event.preventDefault()}>
                 <button onClick={handleDownload}>Download</button>
               </form>
             </div>
@@ -168,7 +172,7 @@ export default function Advanced() {
       </section>
       <section className={styles.column}>
         <div>
-          {/* Create the search input  */}
+          {/* 2.14 Create the search input  */}
           <div>
             <label htmlFor="Meme template">Meme template</label>
             <input
@@ -185,7 +189,7 @@ export default function Advanced() {
             </p>
           </div>
 
-          {/* If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}
+          {/* 2.15 If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}
 
           {selectedImage && (
             <div className={styles.selectedImageBoxStyles}>
@@ -194,7 +198,7 @@ export default function Advanced() {
                 onClick={handleCloseClick}
                 role="presentation"
               >
-                {/* Create a close button with "&times" */}
+                {/* 2.15.1 Create a close button with "&times" */}
                 &times;
               </span>
 
@@ -211,7 +215,7 @@ export default function Advanced() {
             </div>
           )}
 
-          {/* Create an image gallery */}
+          {/* 2.16 Create an image gallery */}
           <div className={styles.boxForHandleImageClick}>
             {filteredImages.map((image) => (
               <div key="image-image.id" style={{ margin: '2px' }}>

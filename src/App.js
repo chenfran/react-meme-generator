@@ -4,8 +4,16 @@ export default function SimpleSolution() {
   const [topText, setTopText] = useState('hi');
   const [bottomText, setBottomText] = useState('');
   const [memeName, setMemeName] = useState('bender');
+  const [image, setImage] = useState(
+    `https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`,
+  );
 
   const url = `https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`;
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setImage(url);
+  }
 
   function handleDownload(event) {
     event.preventDefault();
@@ -58,7 +66,11 @@ export default function SimpleSolution() {
         />
 
         <label htmlFor="Meme template">Meme template</label>
-        <img src={image} alt="Meme template" data-test-id="meme-image" />
+        <img
+          src={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}
+          alt="Meme template"
+          data-test-id="meme-image"
+        />
         <label htmlFor="Meme Name">Meme Name</label>
         <input
           name="Meme Name"
@@ -68,6 +80,7 @@ export default function SimpleSolution() {
           value={memeName}
           onChange={(event) => setMemeName(event.currentTarget.value)}
         />
+        <button onClick={handleSubmit}>Submit</button>
       </form>
 
       <form>

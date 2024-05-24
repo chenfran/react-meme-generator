@@ -42,7 +42,7 @@ export default function SimpleSolution() {
         <input
           name="Top text"
           id="Top text"
-          label="Top text"
+          label={topText}
           placeholder="Type your top text"
           value={topText}
           onChange={(event) => setTopText(event.currentTarget.value)}
@@ -51,7 +51,7 @@ export default function SimpleSolution() {
         <input
           name="Bottom text"
           id="Bottom text"
-          label="Bottom text"
+          label={bottomText}
           placeholder="Type your Bottom text"
           value={bottomText}
           onChange={(event) => setBottomText(event.currentTarget.value)}
@@ -67,7 +67,7 @@ export default function SimpleSolution() {
         <input
           name="Meme Name"
           id="Meme Name"
-          label="Meme Name"
+          label={memeName}
           placeholder="Search for a meme"
           value={memeName}
           onChange={(event) => setMemeName(event.currentTarget.value)}

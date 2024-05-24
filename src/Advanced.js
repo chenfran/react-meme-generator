@@ -170,6 +170,7 @@ export default function Advanced() {
         <div>
           {/* Create the search input  */}
           <div>
+            <label htmlFor="Meme template">Meme template</label>
             <input
               label="Meme template"
               className={styles.searchBar}

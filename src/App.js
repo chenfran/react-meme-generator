@@ -40,17 +40,17 @@ export default function SimpleSolution() {
       <form onSubmit={(event) => event.preventDefault()}>
         <label htmlFor={topText}>Top text</label>
         <input
-          name="Top text"
-          id="Top text"
-          label={topText}
+          name="top text"
+          id="top text"
+          label="Top text"
           placeholder="Type your top text"
           value={topText}
           onChange={(event) => setTopText(event.currentTarget.value)}
         />
         <label htmlFor={bottomText}>Bottom text</label>
         <input
-          name="Bottom text"
-          id="Bottom text"
+          name="bottom text"
+          id="bottom text"
           label={bottomText}
           placeholder="Type your Bottom text"
           value={bottomText}

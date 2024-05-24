@@ -38,7 +38,7 @@ export default function SimpleSolution() {
   return (
     <div>
       <form onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="Top text">Top text</label>
+        <label htmlFor={topText}>Top text</label>
         <input
           name="Top text"
           id="Top text"
@@ -47,7 +47,7 @@ export default function SimpleSolution() {
           value={topText}
           onChange={(event) => setTopText(event.currentTarget.value)}
         />
-        <label htmlFor="Bottom text">Bottom text</label>
+        <label htmlFor={bottomText}>Bottom text</label>
         <input
           name="Bottom text"
           id="Bottom text"
@@ -63,18 +63,15 @@ export default function SimpleSolution() {
           alt="Meme template"
           data-test-id="meme-image"
         />
-      </form>
-      <label htmlFor="Meme Name">Meme Name</label>
-      <input
-        name="Meme Name"
-        id="Meme Name"
-        label="Meme Name"
-        placeholder="Search for a meme"
-        value={memeName}
-        onChange={(event) => setMemeName(event.currentTarget.value)}
-      />
-
-      <form>
+        <label htmlFor={memeName}>Meme Name</label>
+        <input
+          name="Meme Name"
+          id="Meme Name"
+          label="Meme Name"
+          placeholder="Search for a meme"
+          value={memeName}
+          onChange={(event) => setMemeName(event.currentTarget.value)}
+        />
         <button onClick={handleDownload}>Download</button>
       </form>
     </div>

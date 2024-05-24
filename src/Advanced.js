@@ -42,7 +42,7 @@ export default function Advanced() {
     setSelectedImage(null);
   }
 
-  const url = `${memeSelf}/${topText}_/${bottomText}.png`;
+  const url = `${memeSelf}/${topText}/${bottomText}.png`;
 
   function handleDownload(event) {
     event.preventDefault();
@@ -141,7 +141,7 @@ export default function Advanced() {
             <div className={styles.imgPreview}>
               {memeSelf ? (
                 <img
-                  src={`${memeSelf}/${topText}_/${bottomText}.png`}
+                  src={`${memeSelf}/${topText}/${bottomText}.png`}
                   alt={imageSelf.name}
                   style={{ width: '300px' }}
                 />
@@ -149,7 +149,7 @@ export default function Advanced() {
                 <div>
                   <img
                     data-test-id="meme-image"
-                    src={`https://api.memegen.link/images/buzz/${topText}_/${bottomText}.png`}
+                    src={`https://api.memegen.link/images/buzz/${topText}/${bottomText}.png`}
                     alt="buzz"
                     style={{ width: '100%' }}
                   />

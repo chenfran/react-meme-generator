@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
 
 // # THE APP FUNCTION
-export default function App() {
+export default function Advanced() {
   // Declare new state variables, which we'll call "searchTerm", "selectedImage" and "images" for searching for an image, clicking on an image and display the image
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(false);

@@ -5,6 +5,36 @@ export default function SimpleSolution() {
   const [bottomText, setBottomText] = useState('');
   const [memeName, setMemeName] = useState('bender');
 
+  const url = `https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`;
+
+  function handleDownload(event) {
+    event.preventDefault();
+    fetch(url, {
+      method: 'get',
+      headers: {
+        'Content-type': 'image/png',
+      },
+    })
+      .then((response) => response.blob())
+      .then((blob) => {
+        // Create blob link to download
+        const fetchedUrl = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = fetchedUrl;
+        link.setAttribute('download', `meme_${memeName}.png`);
+
+        // Append to html link element page
+        document.body.appendChild(link);
+
+        // Start download
+        link.click();
+
+        // Clean up and remove the link
+        link.parentNode.removeChild(link);
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div>
       <form onSubmit={(event) => event.preventDefault()}>
@@ -40,15 +70,13 @@ export default function SimpleSolution() {
           label="Meme Name"
           placeholder="Search for a meme"
           value={memeName}
+          onClick={() => setMemeName('')}
           onChange={(event) => setMemeName(event.currentTarget.value)}
         />
       </form>
 
-      <form
-        method="get"
-        action={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}
-      >
-        <button name="Download">Download</button>
+      <form>
+        <button onClick={handleDownload}>Download</button>
       </form>
     </div>
   );

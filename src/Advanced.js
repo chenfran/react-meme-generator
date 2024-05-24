@@ -13,7 +13,7 @@ export default function Advanced() {
   const [imageSelf, setImageSelf] = useState('');
 
   // Declare new state variables, which we'll call "topText" and "bottomText" for the text input
-  const [topText, setTopText] = useState('');
+  const [topText, setTopText] = useState('hi');
   const [bottomText, setBottomText] = useState('');
 
   // Use useEffect to fetch Data from the Webpage
@@ -40,6 +40,39 @@ export default function Advanced() {
   // Create function that sets the selectedImage state to null, effectively removing the selected image display
   function handleCloseClick() {
     setSelectedImage(null);
+  }
+
+  const url = `${memeSelf}/${topText}_/${bottomText}.png`;
+
+  function handleDownload(event) {
+    event.preventDefault();
+    fetch(url, {
+      method: 'get',
+      headers: {
+        'Content-type': 'image/png',
+      },
+    })
+      .then((response) => response.blob())
+      .then((blob) => {
+        // Create blob link to download
+        const fetchedUrl = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = fetchedUrl;
+        link.setAttribute(
+          'download',
+          `${memeSelf}/${topText}_/${bottomText}.png`,
+        );
+
+        // Append to html link element page
+        document.body.appendChild(link);
+
+        // Start download
+        link.click();
+
+        // Clean up and remove the link
+        link.parentNode.removeChild(link);
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -75,30 +108,30 @@ export default function Advanced() {
             <form onSubmit={(event) => event.preventDefault()}>
               <div>
                 <div>
-                  <label htmlFor="top">
+                  <label htmlFor="Top text">
                     <strong>Top text: </strong>
                     {topText}
                   </label>
                   <br />
                   <input
-                    name="top"
-                    id="top"
-                    label="top"
+                    name="Top text"
+                    id="Top text"
+                    label="Top text"
                     placeholder="Type your top text"
                     value={topText}
                     onChange={(event) => setTopText(event.currentTarget.value)}
                   />
                   <br />
                   <br />
-                  <label htmlFor="bottom">
+                  <label htmlFor="Bottom text">
                     <strong>Bottom text: </strong>
                     {bottomText}
                   </label>
                   <br />
                   <input
-                    name="bottom"
-                    id="bottom"
-                    label="bottom"
+                    name="Bottom text"
+                    id="Bottom text"
+                    label="Bottom text"
                     placeholder="Type your bottom text"
                     value={bottomText}
                     onChange={(event) =>
@@ -112,7 +145,6 @@ export default function Advanced() {
 
           {/* Create a preview of the generated meme */}
           <div className={styles.column}>
-            <label htmlFor="Meme template">Meme template</label>
             <div className={styles.imgPreview}>
               {memeSelf ? (
                 <img
@@ -134,11 +166,8 @@ export default function Advanced() {
 
             {/* Create a download button  */}
             <div>
-              <form
-                method="get"
-                action={`${memeSelf}/${topText}_/${bottomText}.png`}
-              >
-                <button name="Download">Download</button>
+              <form>
+                <button onClick={handleDownload}>Download</button>
               </form>
             </div>
           </div>
@@ -149,6 +178,7 @@ export default function Advanced() {
           {/* Create the search input  */}
           <div>
             <input
+              label="Meme template"
               className={styles.searchBar}
               placeholder="Search for an image"
               value={searchTerm}
@@ -170,7 +200,6 @@ export default function Advanced() {
               </span>
 
               <img
-                data-test-id="meme-image"
                 src={selectedImage.blank}
                 alt={selectedImage.name}
                 style={{
@@ -188,7 +217,6 @@ export default function Advanced() {
             {filteredImages.map((image) => (
               <div key="image-image.id" style={{ margin: '2px' }}>
                 <img
-                  data-test-id="meme-image"
                   src={image.blank}
                   alt={image.name}
                   onClick={() => handleImageClick(image)}

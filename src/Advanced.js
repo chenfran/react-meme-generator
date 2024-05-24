@@ -142,7 +142,7 @@ export default function Advanced() {
               {memeSelf ? (
                 <img
                   src={`${memeSelf}/${topText}/${bottomText}.png`}
-                  alt={imageSelf.name}
+                  alt="Meme template"
                   style={{ width: '300px' }}
                 />
               ) : (
@@ -172,9 +172,11 @@ export default function Advanced() {
           <div>
             <label htmlFor="Meme template">Meme template</label>
             <input
+              name="Meme template"
+              id="Meme template"
               label="Meme template"
               className={styles.searchBar}
-              placeholder="Search for an image"
+              placeholder="Search for a meme"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />

@@ -63,16 +63,16 @@ export default function SimpleSolution() {
           alt="Meme template"
           data-test-id="meme-image"
         />
-        <label htmlFor="Meme Name">Meme Name</label>
-        <input
-          name="Meme Name"
-          id="Meme Name"
-          label="Meme Name"
-          placeholder="Search for a meme"
-          value={memeName}
-          onChange={(event) => setMemeName(event.currentTarget.value)}
-        />
       </form>
+      <label htmlFor="Meme Name">Meme Name</label>
+      <input
+        name="Meme Name"
+        id="Meme Name"
+        label="Meme Name"
+        placeholder="Search for a meme"
+        value={memeName}
+        onChange={(event) => setMemeName(event.currentTarget.value)}
+      />
 
       <form>
         <button onClick={handleDownload}>Download</button>

@@ -25,7 +25,7 @@ export default function Advanced() {
   }, []);
 
   const filteredImages = images.filter((image) =>
-    image.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    image.id.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   // Create function that sets the selectedImage state to the clicked image
@@ -142,7 +142,7 @@ export default function Advanced() {
               {memeSelf ? (
                 <img
                   src={`${memeSelf}/${topText}/${bottomText}.png`}
-                  alt="Meme template"
+                  alt={imageSelf.name}
                   style={{ width: '300px' }}
                 />
               ) : (

@@ -38,20 +38,20 @@ export default function SimpleSolution() {
   return (
     <div>
       <form onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor={topText}>Top text</label>
+        <label htmlFor="Top text">Top text</label>
         <input
-          name="top text"
-          id="top text"
+          name="Top text"
+          id="Top text"
           label="Top text"
           placeholder="Type your top text"
           value={topText}
           onChange={(event) => setTopText(event.currentTarget.value)}
         />
-        <label htmlFor={bottomText}>Bottom text</label>
+        <label htmlFor="Bottom text">Bottom text</label>
         <input
-          name="bottom text"
-          id="bottom text"
-          label={bottomText}
+          name="Bottom text"
+          id="Bottom text"
+          label="Bottom text"
           placeholder="Type your Bottom text"
           value={bottomText}
           onChange={(event) => setBottomText(event.currentTarget.value)}
@@ -63,11 +63,11 @@ export default function SimpleSolution() {
           alt="Meme template"
           data-test-id="meme-image"
         />
-        <label htmlFor={memeName}>Meme Name</label>
+        <label htmlFor="Meme template">Meme Template</label>
         <input
-          name="Meme Name"
-          id="Meme Name"
-          label={memeName}
+          name="Meme template"
+          id="Meme template"
+          label="Meme template"
           placeholder="Search for a meme"
           value={memeName}
           onChange={(event) => setMemeName(event.currentTarget.value)}

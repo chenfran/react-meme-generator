@@ -63,7 +63,7 @@ export default function SimpleSolution() {
           alt="Meme template"
           data-test-id="meme-image"
         />
-        <label htmlFor="Meme template">Meme Template</label>
+        <label htmlFor="Meme template">Meme template</label>
         <input
           name="Meme template"
           id="Meme template"

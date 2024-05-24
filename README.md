@@ -1,5 +1,13 @@
 # React Meme Generator
 
+In this project you will find two approaches to creating a web application with the requirements below.
+
+There is a simple approach with three input fields and a download button. The simple approach is done without fetching any data and without styling.
+
+The advanced approach is with data fetching and some styling.
+
+The code is described in chapters starting with 1 e.g. 1 Import useState from react etc.
+
 Create a web app with React that allows for users to generate and download memes using the https://memegen.link/ website.
 
 It should allow the user to:

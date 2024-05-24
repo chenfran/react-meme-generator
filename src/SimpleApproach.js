@@ -4,7 +4,7 @@
 import { useState } from 'react';
 
 // 2 Create component with 3 input fields and a download button
-export default function SimpleSolution() {
+export default function SimpleApproach() {
   // 2.1 Declare variables for 3 input fields
   const [topText, setTopText] = useState('hi');
   const [bottomText, setBottomText] = useState('');

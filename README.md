@@ -5,16 +5,16 @@ Create a web app with React that allows for users to generate and download memes
 It should allow the user to:
 
 - [ ] Enter text for the top and bottom of the meme
-  - [ ] The top text box needs to have a label element associated with it containing the text `Top text`
-  - [ ] The bottom text box needs to have a label element associated with it with the text `Bottom text`
+  - [ ] The top text box needs to have a label element associated with it containing the text `Top text` _-> This means that the input element needs a label called Top text: `<input label="Top text" />`_
+  - [ ] The bottom text box needs to have a label element associated with it with the text `Bottom text` _-> This means that the input element needs a label called Bottom text: `<input label="Bottom text" />`_
   - [ ] Both text boxes should be empty when the page first loads
 - [ ] Preview the generated meme
-  - [ ] The image element needs to have an html attribute set as follows: `data-test-id="meme-image"`
-    - [ ] This image element should show a working image when the page first loads
+  - [ ] The image element needs to have an html attribute set as follows: `data-test-id="meme-image"` _-> This means that the image element needs a this data-test-id: `<img data-test-id="meme-image" />`_
+    - [ ] This image element should show a working image when the page first loads _-> This means that an image should be displayed at the beginning, with the input for the top and bottom text already displayed._
 - [ ] Change the meme template (the background image)
-  - [ ] The meme template selector element needs to have a label element associated with it containing the text `Meme template`
-  - [ ] If the user follows the steps below, the `doge` meme template needs to be selected:
-    1. Click on the label of the meme template selector
+  - [ ] The meme template selector element needs to have a label element associated with it containing the text `Meme template` _-> This means creating an input field to search for the meme images._
+  - [ ] If the user follows the steps below, the `doge` meme template needs to be selected: _-> doge is an id from an image_
+    1. Click on the label of the meme template selector _-> This means the input field_
     2. Clear any existing value (eg. with a text box)
     3. Type the text `doge`
     4. Hit enter

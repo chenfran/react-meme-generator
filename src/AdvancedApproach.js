@@ -112,7 +112,10 @@ export default function AdvancedApproach() {
             <form onSubmit={(event) => event.preventDefault()}>
               <div>
                 <div>
-                  <label htmlFor="Top text">Top text</label>
+                  <label htmlFor="Top text">
+                    <strong>Top text: </strong>
+                    {topText}
+                  </label>
                   <input
                     name="Top text"
                     id="Top text"
@@ -123,7 +126,10 @@ export default function AdvancedApproach() {
                   />
                   <br />
                   <br />
-                  <label htmlFor="Bottom text">Bottom text</label>
+                  <label htmlFor="Bottom text">
+                    <strong>Bottom text: </strong>
+                    {bottomText}
+                  </label>
                   <br />
                   <input
                     name="Bottom text"

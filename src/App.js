@@ -57,7 +57,7 @@ export default function SimpleSolution() {
           onChange={(event) => setBottomText(event.currentTarget.value)}
         />
 
-        <label htmlFor="Meme template">Meme template</label>
+        {/* <label htmlFor="Meme template">Meme template</label> */}
         <img
           src={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}
           alt="Meme template"

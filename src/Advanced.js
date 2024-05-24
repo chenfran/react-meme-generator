@@ -5,7 +5,7 @@ import styles from './App.module.scss';
 // # THE APP FUNCTION
 export default function Advanced() {
   // Declare new state variables, which we'll call "searchTerm", "selectedImage" and "images" for searching for an image, clicking on an image and display the image
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('cryingfloor');
   const [selectedImage, setSelectedImage] = useState(false);
   const [images, setImages] = useState([]);
 
@@ -13,7 +13,7 @@ export default function Advanced() {
   const [imageSelf, setImageSelf] = useState('');
 
   // Declare new state variables, which we'll call "topText" and "bottomText" for the text input
-  const [topText, setTopText] = useState('hi');
+  const [topText, setTopText] = useState('welcome');
   const [bottomText, setBottomText] = useState('');
 
   // Use useEffect to fetch Data from the Webpage
@@ -149,8 +149,8 @@ export default function Advanced() {
                 <div>
                   <img
                     data-test-id="meme-image"
-                    src={`https://api.memegen.link/images/buzz/${topText}/${bottomText}.png`}
-                    alt="buzz"
+                    src={`https://api.memegen.link/images/${searchTerm}/${topText}/${bottomText}.png`}
+                    alt="preview"
                     style={{ width: '100%' }}
                   />
                 </div>
@@ -180,6 +180,9 @@ export default function Advanced() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
+            <p style={{ fontSize: 'small' }}>
+              Clear the search bar to see all images
+            </p>
           </div>
 
           {/* If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}

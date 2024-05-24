@@ -4,8 +4,8 @@ import SimpleApproach from './SimpleApproach.js';
 export default function App() {
   return (
     <>
-      {/* <AdvancedApproach /> */}
-      <SimpleApproach />
+      <AdvancedApproach />
+      {/* <SimpleApproach /> */}
     </>
   );
 }

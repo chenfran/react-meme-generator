@@ -45,7 +45,7 @@ export default function AdvancedApproach() {
   }
 
   // 2.8 Create url-variable to use it for the download function below
-  const url = `${memeSelf}/${topText}/${bottomText}.png`;
+  const url = `${memeSelf}/${topText}_/${bottomText}.png`;
 
   // 2.9 Create a function to download image
   function handleDownload(event) {
@@ -116,6 +116,7 @@ export default function AdvancedApproach() {
                     <strong>Top text: </strong>
                     {topText}
                   </label>
+                  <br />
                   <input
                     name="Top text"
                     id="Top text"
@@ -151,7 +152,7 @@ export default function AdvancedApproach() {
             <div className={styles.imgPreview}>
               {memeSelf ? (
                 <img
-                  src={`${memeSelf}/${topText}/${bottomText}.png`}
+                  src={`${memeSelf}/${topText}_/${bottomText}.png`}
                   alt={imageSelf.name}
                   style={{ width: '300px' }}
                 />
@@ -159,7 +160,7 @@ export default function AdvancedApproach() {
                 <div>
                   <img
                     data-test-id="meme-image"
-                    src={`https://api.memegen.link/images/${searchTerm}/${topText}/${bottomText}.png`}
+                    src={`https://api.memegen.link/images/${searchTerm}/${topText}_/${bottomText}.png`}
                     alt="preview"
                     style={{ width: '100%' }}
                   />
@@ -224,7 +225,7 @@ export default function AdvancedApproach() {
           {/* 2.16 Create an image gallery */}
           <div className={styles.boxForHandleImageClick}>
             {filteredImages.map((image) => (
-              <div key="image-image.id" style={{ margin: '2px' }}>
+              <div key={`image-${image.id}`} style={{ margin: '2px' }}>
                 <img
                   src={image.blank}
                   alt={image.name}

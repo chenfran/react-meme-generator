@@ -111,40 +111,34 @@ export default function AdvancedApproach() {
             </span>
             {/* 2.11 Create two input fields for the top and bottom text */}
             <form onSubmit={(event) => event.preventDefault()}>
-              <div>
-                <div>
-                  <label htmlFor="Top text">
-                    <strong>Top text: </strong>
-                    {topText}
-                  </label>
-                  <br />
-                  <input
-                    name="Top text"
-                    id="Top text"
-                    label="Top text"
-                    placeholder="Type your top text"
-                    value={topText}
-                    onChange={(event) => setTopText(event.currentTarget.value)}
-                  />
-                  <br />
-                  <br />
-                  <label htmlFor="Bottom text">
-                    <strong>Bottom text: </strong>
-                    {bottomText}
-                  </label>
-                  <br />
-                  <input
-                    name="Bottom text"
-                    id="Bottom text"
-                    label="Bottom text"
-                    placeholder="Type your bottom text"
-                    value={bottomText}
-                    onChange={(event) =>
-                      setBottomText(event.currentTarget.value)
-                    }
-                  />
-                </div>
-              </div>
+              <label htmlFor="Top text">
+                <strong>Top text: </strong>
+                {topText}
+              </label>
+              <br />
+              <input
+                name="Top text"
+                id="Top text"
+                label="Top text"
+                placeholder="Type your top text"
+                value={topText}
+                onChange={(event) => setTopText(event.currentTarget.value)}
+              />
+              <br />
+              <br />
+              <label htmlFor="Bottom text">
+                <strong>Bottom text: </strong>
+                {bottomText}
+              </label>
+              <br />
+              <input
+                name="Bottom text"
+                id="Bottom text"
+                label="Bottom text"
+                placeholder="Type your bottom text"
+                value={bottomText}
+                onChange={(event) => setBottomText(event.currentTarget.value)}
+              />
             </form>
           </div>
 
@@ -170,76 +164,68 @@ export default function AdvancedApproach() {
             </div>
 
             {/* 2.13 Create a download button  */}
-            <div>
-              <form onSubmit={(event) => event.preventDefault()}>
-                <button onClick={handleDownload}>
-                  <FaDownload className={styles.icon} />
-                  Download
-                </button>
-              </form>
-            </div>
+            <button onClick={handleDownload}>
+              <FaDownload className={styles.icon} />
+              Download
+            </button>
           </div>
         </div>
       </section>
       <section className={styles.column}>
-        <div>
-          {/* 2.14 Create the search input  */}
-          <div>
-            <label htmlFor="Meme template">Meme template</label>
-            <input
-              name="Meme template"
-              id="Meme template"
-              label="Meme template"
-              className={styles.searchBar}
-              placeholder="Search for a meme"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+        {/* 2.14 Create the search input  */}
+        <label htmlFor="Meme template">Meme template</label>
+        <input
+          name="Meme template"
+          id="Meme template"
+          label="Meme template"
+          className={styles.searchBar}
+          placeholder="Search for a meme"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <p style={{ fontSize: 'small' }}>
+          Clear the search bar to see all images
+        </p>
+
+        {/* 2.15 If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}
+
+        {selectedImage && (
+          <div className={styles.selectedImageBoxStyles}>
+            <span
+              className={styles.closeButtonStyles}
+              onClick={handleCloseClick}
+              role="presentation"
+            >
+              {/* 2.15.1 Create a close button with "&times" */}
+              &times;
+            </span>
+
+            <img
+              src={selectedImage.blank}
+              alt={selectedImage.name}
+              style={{
+                width: '300px',
+                height: '300px',
+                objectFit: 'cover',
+              }}
             />
-            <p style={{ fontSize: 'small' }}>
-              Clear the search bar to see all images
-            </p>
+            <p>{selectedImage.name}</p>
           </div>
+        )}
 
-          {/* 2.15 If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}
-
-          {selectedImage && (
-            <div className={styles.selectedImageBoxStyles}>
-              <span
-                className={styles.closeButtonStyles}
-                onClick={handleCloseClick}
-                role="presentation"
-              >
-                {/* 2.15.1 Create a close button with "&times" */}
-                &times;
-              </span>
-
+        {/* 2.16 Create an image gallery */}
+        <div className={styles.boxForHandleImageClick}>
+          {filteredImages.map((image) => (
+            <div key={`image-${image.id}`} style={{ margin: '2px' }}>
               <img
-                src={selectedImage.blank}
-                alt={selectedImage.name}
-                style={{
-                  width: '300px',
-                  height: '300px',
-                  objectFit: 'cover',
-                }}
+                src={image.blank}
+                alt={image.name}
+                onClick={() => handleImageClick(image)}
+                style={{ width: '100px', height: '100px' }}
+                role="presentation"
               />
-              <p>{selectedImage.name}</p>
             </div>
-          )}
-
-          {/* 2.16 Create an image gallery */}
-          <div className={styles.boxForHandleImageClick}>
-            {filteredImages.map((image) => (
-              <div key={`image-${image.id}`} style={{ margin: '2px' }}>
-                <img
-                  src={image.blank}
-                  alt={image.name}
-                  onClick={() => handleImageClick(image)}
-                  style={{ width: '100px', height: '100px' }}
-                  role="presentation"
-                />
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
       </section>
     </main>

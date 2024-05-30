@@ -1,5 +1,6 @@
 // # THIS IS THE SIMPLE APPROACH WITHOUT FETCHING ANY DATA, ALTHOUGH IT WAS OKISHLY SIMPLE
 
+import './App.css';
 // 1 Import useState
 import { useState } from 'react';
 
@@ -43,14 +44,14 @@ export default function SimpleApproach() {
   }
 
   return (
-    <div>
+    <div className="container">
       {/* 2.4 Create input fields  */}
       <form onSubmit={(event) => event.preventDefault()}>
         {/* 2.4.1 Create input field for Top text */}
         <label htmlFor="Top text">Top text</label>
         <input
-          // name="Top text"
-          // id="Top text"
+          name="Top text"
+          id="Top text"
           label="Top text"
           placeholder="Type your top text"
           value={topText}

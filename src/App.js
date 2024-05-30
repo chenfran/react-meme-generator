@@ -1,11 +1,5 @@
-import AdvancedApproach from './AdvancedApproach.js';
-import SimpleApproach from './SimpleApproach.js';
+import SimpleApproach from './SimpleApproach';
 
 export default function App() {
-  return (
-    <>
-      <AdvancedApproach />
-      {/* <SimpleApproach /> */}
-    </>
-  );
+  return <SimpleApproach />;
 }

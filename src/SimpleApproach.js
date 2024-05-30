@@ -49,8 +49,8 @@ export default function SimpleApproach() {
         {/* 2.4.1 Create input field for Top text */}
         <label htmlFor="Top text">Top text</label>
         <input
-          name="Top text"
-          id="Top text"
+          // name="Top text"
+          // id="Top text"
           label="Top text"
           placeholder="Type your top text"
           value={topText}
@@ -69,7 +69,7 @@ export default function SimpleApproach() {
         {/* 2.4.3 Create default image */}
         <img
           src={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}
-          alt="Meme template"
+          alt="Customised template"
           data-test-id="meme-image"
         />
         {/* 2.4.4 Create input field for Meme template */}

@@ -2,7 +2,6 @@
 
 // 1 IMPORT FUNCTIONS, ICON AND STYLING
 import { useEffect, useState } from 'react';
-// import { FaDownload } from 'react-icons/fa';
 import styles from './App.module.scss';
 
 // 2 CREATE COMPONENT
@@ -156,10 +155,7 @@ export default function AdvancedApproach() {
               </div>
 
               {/* 2.13 Create a download button  */}
-              <button onClick={handleDownload}>
-                {/* <FaDownload className={styles.icon} /> */}
-                Download
-              </button>
+              <button onClick={handleDownload}>Download</button>
             </div>
           </div>
         </section>

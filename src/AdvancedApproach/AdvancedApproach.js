@@ -121,9 +121,7 @@ export default function AdvancedApproach() {
                   onChange={(event) => setTopText(event.currentTarget.value)}
                 />
                 <br />
-                <label htmlFor="Bottom text">
-                  <strong>Bottom text</strong>
-                </label>
+                <label htmlFor="Bottom text">Bottom text</label>
                 <input
                   name="Bottom text"
                   id="Bottom text"

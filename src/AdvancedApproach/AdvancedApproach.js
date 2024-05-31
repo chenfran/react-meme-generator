@@ -111,7 +111,7 @@ export default function AdvancedApproach() {
               </span>
               {/* 2.11 Create two input fields for the top and bottom text */}
               <form onSubmit={(event) => event.preventDefault()}>
-                <label htmlFor="Top text">Top text</label>
+                <label htmlFor="Top text">Top text:</label>
                 <input
                   name="Top text"
                   id="Top text"

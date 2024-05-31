@@ -46,7 +46,7 @@ export default function AdvancedApproach() {
   }
 
   // 2.8 Create url-variable to use it for the download function below
-  const url = `${memeSelf}/${topText}_/${bottomText}.png`;
+  const url = `${memeSelf}/${topText}/${bottomText}.png`;
 
   // 2.9 Create a function to download image
   function handleDownload(event) {
@@ -65,7 +65,7 @@ export default function AdvancedApproach() {
         link.href = fetchedUrl;
         link.setAttribute(
           'download',
-          `${memeSelf}/${topText}_/${bottomText}.png`,
+          `${memeSelf}/${topText}/${bottomText}.png`,
         );
 
         // 2.9.2 Append to html link element page
@@ -138,7 +138,7 @@ export default function AdvancedApproach() {
             <div className={styles.imgPreview}>
               {memeSelf ? (
                 <img
-                  src={`${memeSelf}/${topText}_/${bottomText}.png`}
+                  src={`${memeSelf}/${topText}/${bottomText}.png`}
                   alt={imageSelf.name}
                   style={{ width: '300px' }}
                 />
@@ -146,7 +146,7 @@ export default function AdvancedApproach() {
                 <div>
                   <img
                     data-test-id="meme-image"
-                    src={`https://api.memegen.link/images/${searchTerm}/${topText}_/${bottomText}.png`}
+                    src={`https://api.memegen.link/images/${searchTerm}/${topText}/${bottomText}.png`}
                     alt="preview"
                     style={{ width: '100%' }}
                   />

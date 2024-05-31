@@ -81,144 +81,147 @@ export default function AdvancedApproach() {
   }
 
   return (
-    <main className={styles.row}>
-      <section className={styles.column}>
-        <h1>React Meme Generator</h1>
-        <div className={styles.row}>
-          {/* 2.10 Create a user guide on how to use the meme generator  */}
-          <div className={styles.column}>
-            <span>
-              <strong>Create Your Own Meme:</strong>
-              <ol>
-                <li>
-                  <strong>Select an image: </strong>
-                  Browse or click an image on the right.
-                </li>
-                <li>
-                  <strong>Add text: </strong>Type in the Top or Bottom text
-                  fields to add text to the image.
-                  <br />
-                  <span style={{ fontSize: 'small' }}>
-                    Use letters and numbers only. No special characters.
-                  </span>
-                </li>
-                <li>
-                  <strong>Download: </strong>Click the download button to save
-                  your meme.
-                </li>
-              </ol>
-              <p>Enjoy creating!</p>
-            </span>
-            {/* 2.11 Create two input fields for the top and bottom text */}
-            <form onSubmit={(event) => event.preventDefault()}>
-              <label htmlFor="Top text">Top text</label>
-              <input
-                name="Top text"
-                id="Top text"
-                label="Top text"
-                placeholder="Type your top text"
-                value={topText}
-                onChange={(event) => setTopText(event.currentTarget.value)}
-              />
-              <br />
-              <label htmlFor="Bottom text">Bottom text</label>
-              <input
-                name="Bottom text"
-                id="Bottom text"
-                label="Bottom text"
-                placeholder="Type your bottom text"
-                value={bottomText}
-                onChange={(event) => setBottomText(event.currentTarget.value)}
-              />
-            </form>
-          </div>
-
-          {/* 2.12 Create a preview of the generated meme */}
-          <div className={styles.column}>
-            <div className={styles.imgPreview}>
-              {memeSelf ? (
-                <img
-                  src={`${memeSelf}/${topText}/${bottomText}.png`}
-                  alt={imageSelf.name}
-                  style={{ width: '300px' }}
+    <div>
+      <main className={styles.row}>
+        <section className={styles.column}>
+          <h1>React Meme Generator</h1>
+          <div className={styles.row}>
+            {/* 2.10 Create a user guide on how to use the meme generator  */}
+            <div className={styles.column}>
+              <span>
+                <strong>Create Your Own Meme:</strong>
+                <ol>
+                  <li>
+                    <strong>Select an image: </strong>
+                    Browse or click an image on the right.
+                  </li>
+                  <li>
+                    <strong>Add text: </strong>Type in the Top or Bottom text
+                    fields to add text to the image.
+                    <br />
+                    <span style={{ fontSize: 'small' }}>
+                      Use letters and numbers only. No special characters.
+                    </span>
+                  </li>
+                  <li>
+                    <strong>Download: </strong>Click the download button to save
+                    your meme.
+                  </li>
+                </ol>
+                <p>Enjoy creating!</p>
+              </span>
+              {/* 2.11 Create two input fields for the top and bottom text */}
+              <form onSubmit={(event) => event.preventDefault()}>
+                <label htmlFor="Top text">Top text</label>
+                <input
+                  name="Top text"
+                  id="Top text"
+                  label="Top text"
+                  placeholder="Type your top text"
+                  value={topText}
+                  onChange={(event) => setTopText(event.currentTarget.value)}
                 />
-              ) : (
-                <div>
+                <br />
+                <label htmlFor="Bottom text">Bottom text</label>
+                <input
+                  name="Bottom text"
+                  id="Bottom text"
+                  label="Bottom text"
+                  placeholder="Type your bottom text"
+                  value={bottomText}
+                  onChange={(event) => setBottomText(event.currentTarget.value)}
+                />
+              </form>
+            </div>
+
+            {/* 2.12 Create a preview of the generated meme */}
+            <div className={styles.column}>
+              <div className={styles.imgPreview}>
+                {memeSelf ? (
                   <img
-                    data-test-id="meme-image"
-                    src={`https://api.memegen.link/images/${searchTerm}/${topText}/${bottomText}.png`}
-                    alt="preview"
-                    style={{ width: '100%' }}
+                    src={`${memeSelf}/${topText}/${bottomText}.png`}
+                    alt={imageSelf.name}
+                    style={{ width: '300px' }}
                   />
-                </div>
-              )}
+                ) : (
+                  <div>
+                    <img
+                      data-test-id="meme-image"
+                      src={`https://api.memegen.link/images/${searchTerm}/${topText}/${bottomText}.png`}
+                      alt="preview"
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* 2.13 Create a download button  */}
+              <button onClick={handleDownload}>
+                {/* <FaDownload className={styles.icon} /> */}
+                Download
+              </button>
             </div>
-
-            {/* 2.13 Create a download button  */}
-            <button onClick={handleDownload}>
-              {/* <FaDownload className={styles.icon} /> */}
-              Download
-            </button>
           </div>
-        </div>
-      </section>
-      <section className={styles.column}>
-        {/* 2.14 Create the search input  */}
-        <label htmlFor="Meme template">Meme template</label>
-        <input
-          name="Meme template"
-          id="Meme template"
-          label="Meme template"
-          className={styles.searchBar}
-          placeholder="Search for a meme"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <p style={{ fontSize: 'small' }}>
-          Clear the search bar to see all images
-        </p>
+        </section>
+        <section className={styles.column}>
+          {/* 2.14 Create the search input  */}
+          <label htmlFor="Meme template">Meme template</label>
+          <input
+            name="Meme template"
+            id="Meme template"
+            label="Meme template"
+            className={styles.searchBar}
+            placeholder="Search for a meme"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <p style={{ fontSize: 'small' }}>
+            Clear the search bar to see all images
+          </p>
 
-        {/* 2.15 If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}
+          {/* 2.15 If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}
 
-        {selectedImage && (
-          <div className={styles.selectedImageBoxStyles}>
-            <span
-              className={styles.closeButtonStyles}
-              onClick={handleCloseClick}
-              role="presentation"
-            >
-              {/* 2.15.1 Create a close button with "&times" */}
-              &times;
-            </span>
-
-            <img
-              src={selectedImage.blank}
-              alt={selectedImage.name}
-              style={{
-                width: '300px',
-                height: '300px',
-                objectFit: 'cover',
-              }}
-            />
-            <p>{selectedImage.name}</p>
-          </div>
-        )}
-
-        {/* 2.16 Create an image gallery */}
-        <div className={styles.boxForHandleImageClick}>
-          {filteredImages.map((image) => (
-            <div key={`image-${image.id}`} style={{ margin: '2px' }}>
-              <img
-                src={image.blank}
-                alt={image.name}
-                onClick={() => handleImageClick(image)}
-                style={{ width: '100px', height: '100px' }}
+          {selectedImage && (
+            <div className={styles.selectedImageBoxStyles}>
+              <span
+                className={styles.closeButtonStyles}
+                onClick={handleCloseClick}
                 role="presentation"
+              >
+                {/* 2.15.1 Create a close button with "&times" */}
+                &times;
+              </span>
+
+              <img
+                src={selectedImage.blank}
+                alt={selectedImage.name}
+                style={{
+                  width: '300px',
+                  height: '300px',
+                  objectFit: 'cover',
+                }}
               />
+              <p>{selectedImage.name}</p>
             </div>
-          ))}
-        </div>
-      </section>
-    </main>
+          )}
+
+          {/* 2.16 Create an image gallery */}
+          <div className={styles.boxForHandleImageClick}>
+            {filteredImages.map((image) => (
+              <div key={`image-${image.id}`} style={{ margin: '2px' }}>
+                <img
+                  src={image.blank}
+                  alt={image.name}
+                  onClick={() => handleImageClick(image)}
+                  style={{ width: '100px', height: '100px' }}
+                  role="presentation"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+      <footer>Created by Franziska Chen, Vienna 2024</footer>
+    </div>
   );
 }

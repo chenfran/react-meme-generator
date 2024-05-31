@@ -111,9 +111,7 @@ export default function AdvancedApproach() {
               </span>
               {/* 2.11 Create two input fields for the top and bottom text */}
               <form onSubmit={(event) => event.preventDefault()}>
-                <label htmlFor="Top text">
-                  <strong>Top text:</strong>
-                </label>
+                <label htmlFor="Top text">Top text</label>
                 <input
                   name="Top text"
                   id="Top text"
@@ -123,7 +121,9 @@ export default function AdvancedApproach() {
                   onChange={(event) => setTopText(event.currentTarget.value)}
                 />
                 <br />
-                <label htmlFor="Bottom text">Bottom text</label>
+                <label htmlFor="Bottom text">
+                  <strong>Bottom text</strong>
+                </label>
                 <input
                   name="Bottom text"
                   id="Bottom text"

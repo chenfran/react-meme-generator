@@ -44,48 +44,51 @@ export default function SimpleApproach() {
   }
 
   return (
-    <div className="container">
-      {/* 2.4 Create input fields  */}
-      <form onSubmit={(event) => event.preventDefault()}>
-        {/* 2.4.1 Create input field for Top text */}
-        <label htmlFor="Top text">Top text</label>
-        <input
-          name="Top text"
-          id="Top text"
-          label="Top text"
-          placeholder="Type your top text"
-          value={topText}
-          onChange={(event) => setTopText(event.currentTarget.value)}
-        />
-        {/* 2.4.2 Create input field for Bottom text */}
-        <label htmlFor="Bottom text">Bottom text</label>
-        <input
-          name="Bottom text"
-          id="Bottom text"
-          label="Bottom text"
-          placeholder="Type your Bottom text"
-          value={bottomText}
-          onChange={(event) => setBottomText(event.currentTarget.value)}
-        />
-        {/* 2.4.3 Create default image */}
-        <img
-          src={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}
-          alt="Customised template"
-          data-test-id="meme-image"
-        />
-        {/* 2.4.4 Create input field for Meme template */}
-        <label htmlFor="Meme template">Meme template</label>
-        <input
-          name="Meme template"
-          id="Meme template"
-          label="Meme template"
-          placeholder="Search for a meme"
-          value={memeName}
-          onChange={(event) => setMemeName(event.currentTarget.value)}
-        />
-        {/* 2.4.5 Create download button */}
-        <button onClick={handleDownload}>Download</button>
-      </form>
+    <div>
+      <div className="container">
+        {/* 2.4 Create input fields  */}
+        <form onSubmit={(event) => event.preventDefault()}>
+          {/* 2.4.1 Create input field for Top text */}
+          <label htmlFor="Top text">Top text</label>
+          <input
+            name="Top text"
+            id="Top text"
+            label="Top text"
+            placeholder="Type your top text"
+            value={topText}
+            onChange={(event) => setTopText(event.currentTarget.value)}
+          />
+          {/* 2.4.2 Create input field for Bottom text */}
+          <label htmlFor="Bottom text">Bottom text</label>
+          <input
+            name="Bottom text"
+            id="Bottom text"
+            label="Bottom text"
+            placeholder="Type your bottom text"
+            value={bottomText}
+            onChange={(event) => setBottomText(event.currentTarget.value)}
+          />
+          {/* 2.4.3 Create default image */}
+          <img
+            src={`https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`}
+            alt="Customised template"
+            data-test-id="meme-image"
+          />
+          {/* 2.4.4 Create input field for Meme template */}
+          <label htmlFor="Meme template">Meme template</label>
+          <input
+            name="Meme template"
+            id="Meme template"
+            label="Meme template"
+            placeholder="Search for a meme"
+            value={memeName}
+            onChange={(event) => setMemeName(event.currentTarget.value)}
+          />
+          {/* 2.4.5 Create download button */}
+          <button onClick={handleDownload}>Download</button>
+        </form>
+      </div>
+      <footer>Created by Franziska Chen, Vienna 2024</footer>
     </div>
   );
 }

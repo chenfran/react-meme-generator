@@ -27,6 +27,9 @@ label {
 }
 
 input {
+  outline: none;
+  background: #f9f9f9;
+  color: #333;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -60,4 +63,11 @@ img {
   margin-top: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #333;
 }

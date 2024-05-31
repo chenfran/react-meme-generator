@@ -2,7 +2,7 @@
 
 // 1 IMPORT FUNCTIONS, ICON AND STYLING
 import { useEffect, useState } from 'react';
-import { FaDownload } from 'react-icons/fa';
+// import { FaDownload } from 'react-icons/fa';
 import styles from './App.module.scss';
 
 // 2 CREATE COMPONENT
@@ -111,11 +111,7 @@ export default function AdvancedApproach() {
             </span>
             {/* 2.11 Create two input fields for the top and bottom text */}
             <form onSubmit={(event) => event.preventDefault()}>
-              <label htmlFor="Top text">
-                <strong>Top text: </strong>
-                {topText}
-              </label>
-              <br />
+              <label htmlFor="Top text">Top text</label>
               <input
                 name="Top text"
                 id="Top text"
@@ -125,12 +121,7 @@ export default function AdvancedApproach() {
                 onChange={(event) => setTopText(event.currentTarget.value)}
               />
               <br />
-              <br />
-              <label htmlFor="Bottom text">
-                <strong>Bottom text: </strong>
-                {bottomText}
-              </label>
-              <br />
+              <label htmlFor="Bottom text">Bottom text</label>
               <input
                 name="Bottom text"
                 id="Bottom text"
@@ -165,7 +156,7 @@ export default function AdvancedApproach() {
 
             {/* 2.13 Create a download button  */}
             <button onClick={handleDownload}>
-              <FaDownload className={styles.icon} />
+              {/* <FaDownload className={styles.icon} /> */}
               Download
             </button>
           </div>

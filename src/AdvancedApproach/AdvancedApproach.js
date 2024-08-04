@@ -6,13 +6,13 @@ import styles from './App.module.scss';
 
 // 2 CREATE COMPONENT
 export default function AdvancedApproach() {
-  // 2.1 Declare new state variables, which we'll call "searchTerm", "selectedImage" and "images" for searching for an image, clicking on an image and display the image
+  // 2.1 Declare new state variables, which we'll call "searchTerm", "isImageSelected" and "images" for searching for an image, clicking on an image and display the image
   const [searchTerm, setSearchTerm] = useState('cryingfloor');
-  const [selectedImage, setSelectedImage] = useState(false);
+  const [isImageSelected, setIsImageSelected] = useState(false);
   const [images, setImages] = useState([]);
 
-  // 2.2 Declare a new state variable, which we'll call "imageSelf" to use it later to get the URL from the meme images
-  const [imageSelf, setImageSelf] = useState('');
+  // 2.2 Declare a new state variable, which we'll call "imageUrl" to use it later to get the URL from the meme images
+  const [imageUrl, setImageUrl] = useState('');
 
   // 2.3 Declare new state variables, which we'll call "topText" and "bottomText" for the text input
   const [topText, setTopText] = useState('welcome');
@@ -30,18 +30,18 @@ export default function AdvancedApproach() {
     image.id.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  // 2.5 Create function that sets the selectedImage state to the clicked image
+  // 2.5 Create function that sets the isImageSelected state to the clicked image
   function handleImageClick(image) {
-    setSelectedImage(image);
-    setImageSelf(image.blank);
+    setIsImageSelected(image);
+    setImageUrl(image.blank);
   }
 
   // 2.6 Create a variable to remove the ".png" from the end of the URL
-  const memeSelf = imageSelf.replace(/.png/g, '');
+  const memeSelf = imageUrl.replace(/.png/g, '');
 
-  // 2.7 Create function that sets the selectedImage state to null, effectively removing the selected image display
+  // 2.7 Create function that sets the isImageSelected state to null, effectively removing the selected image display
   function handleCloseClick() {
-    setSelectedImage(null);
+    setIsImageSelected(null);
   }
 
   // 2.8 Create url-variable to use it for the download function below
@@ -139,7 +139,7 @@ export default function AdvancedApproach() {
                 {memeSelf ? (
                   <img
                     src={`${memeSelf}/${topText}/${bottomText}.png`}
-                    alt={imageSelf.name}
+                    alt={imageUrl.name}
                     style={{ width: '300px' }}
                   />
                 ) : (
@@ -175,10 +175,10 @@ export default function AdvancedApproach() {
             Clear the search bar to see all images
           </p>
 
-          {/* 2.15 If selectedImage is NOT null, a box is displayed above the image gallery with the selected image and its title */}
+          {/* 2.15 If isImageSelected is NOT null, a box is displayed above the image gallery with the selected image and its title */}
 
-          {selectedImage && (
-            <div className={styles.selectedImageBoxStyles}>
+          {isImageSelected && (
+            <div className={styles.isImageSelectedBoxStyles}>
               <span
                 className={styles.closeButtonStyles}
                 onClick={handleCloseClick}
@@ -189,15 +189,15 @@ export default function AdvancedApproach() {
               </span>
 
               <img
-                src={selectedImage.blank}
-                alt={selectedImage.name}
+                src={isImageSelected.blank}
+                alt={isImageSelected.name}
                 style={{
                   width: '300px',
                   height: '300px',
                   objectFit: 'cover',
                 }}
               />
-              <p>{selectedImage.name}</p>
+              <p>{isImageSelected.name}</p>
             </div>
           )}
 
